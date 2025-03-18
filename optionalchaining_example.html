@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         //Realtime example
+
+         const cafe = {
+            name:'cafe coffee day',
+            openingTime: {
+
+                tue:{
+                    opening:10,
+                    closing:11
+                },
+                thur:{
+                    opening:11,
+                    closing:10
+                },
+                sat:{
+                    opening:9,
+                    closing:11
+                }
+            }
+         }
+
+         const day = ['sun', 'mon', 'tue', 'wed', 'thur', 'fri', 'sat'];   
+
+         for(let i= 0;i < day.length; i++){
+
+            // const start = restaurant.openingTime.day[i]
+            //here day is in string but in object key it is not in string so we go with bracket notation[day[i]]
+
+            // const start = cafe.openingTime[day[i]].opening;
+            // instead of optional chaining(?.) we give '.' opening throws an error if the day is not present.
+
+            //and [day[i]]?.opening - here we use optional chaining to avoid error. 
+
+            // const start = cafe.openingTime[day[i]]?.opening    // it returns undefined.         
+            
+            // const start = cafe.openingTime[day[i]]?.opening ?? 'closed'
+            
+            // console.log(`on ${day[i]} we open at ${start}`);
+
+
+            // or use in if condition
+
+            // const start = cafe.openingTime[day[i]]?.opening
+            // const close = cafe.openingTime[day[i]]?.closing
+
+            // if(cafe.openingTime[day[i]]){
+            //     console.log(`on ${day[i]} we open at ${start} & close at ${close}`)
+            // }
+            // else {
+            //     console.log(`on ${day[i]} we are closed`);
+                
+            // }
+
+
+            //or using trenary operator
+
+            const start = cafe.openingTime[day[i]]?.opening
+            const close = cafe.openingTime[day[i]]?.closing
+
+
+            cafe.openingTime[day[i]] ? console.log(`on ${day[i]} we open at ${start} & close at ${close}`) 
+                                     : console.log(`on ${day[i]} we are closed`);        
+        
+        }
+
+
+
+           
+    </script>
+</body>
+</html>

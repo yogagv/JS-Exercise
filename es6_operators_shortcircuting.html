@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES-6 Short Circuting</title>
+</head>
+<body>
+    <script>
+        /*
+        falsy values - 0, "", undefined, null, NaN, false.
+        truthy values - 1, [], {}, " ", true, any object.
+
+        short circuting -  Short-circuiting occurs when JavaScript evaluates logical operators (&&, ||, ??) 
+        and stops execution as soon as the result is determined.
+        */
+
+
+        //OR(||) Operator returns first truthy values.
+
+        console.log(3 || 'alex');
+        console.log("" || 3);
+        console.log('alex' || undefined);
+        console.log(undefined || undefined);
+        console.log(null || 'alex' || undefined)
+        console.log(null || undefined || 0 || 'alex');
+
+        console.log(0 || 0);
+        console.log(0 || 1);
+        console.log(1 || 0);
+        console.log(1 || 1);
+
+
+
+        //trenary operator  - use if...else for complex logic
+
+        // syntax
+
+        //    condition ? expressionIfTrue : expressionIfFalse;
+
+        let age = 18;
+        let canVote = age >= 18 ? `Yes, you can vote! coz you are ${age}` : `No, you cannot vote. coz you are under ${age}`;
+        console.log(canVote);
+
+
+
+
+        const car = {
+            brand: 'Toyota',
+            kms: 0
+        }
+
+        const distance = car.kms ? car.kms: '10';           //ternary operator
+        console.log(distance);
+
+        //Since the condition car.kms ? evaluates to false, the ternary operator selects '10' (a string) as the value.
+
+        const dist = car.kms || 10;
+        console.log(dist);
+
+        //Since 0 is falsy, 10 is chosen as the result.
+
+
+
+         //Nullish Coalescing:
+
+         //If we want to use 0 as a valid value and only replace null or undefined
+
+         //If we only want to consider null or undefined as invalid (and allow 0), 
+         // we should use nullish coalescing (??) instead of ||
+
+         //if the property not exist then only we show 10.
+         //like if car.kms is 0 then it will show 0 not 10 . if car.kms is null or undefined then it will show 10. or not declared.
+         //const car = {
+
+         //    brand: 'Toyota'
+         //}
+
+         const distFixed = car.kms ?? 10; 
+         console.log(distFixed);
+
+
+         //AND(&&) Operator
+
+         //if both values are truthy, then the result is the second value
+
+         console.log(0 && 0);
+         console.log(1 && 0);
+         console.log(0 && 1);
+         console.log(1 && 1);
+
+         console.log('alex' && 'john');
+         console.log(1 && 2);
+         console.log('sam' && 'alex' && 65 && undefined && NaN);
+         console.log(null && 0 && NaN && 'sam' && 'alex' && 65);
+
+
+         //Optional Chaining(?.) - used to safely access nested properties without causing errors if a property is null or undefined
+
+         //Prevents runtime errors for missing properties
+         //Simplifies code and avoids multiple if checks
+         //Works with properties, methods, and arrays
+
+
+
+         //here need to check whether the cafe is opened on monday or not
+
+
+         const restaurant = {
+            name:'starbuks',
+            openingTime: {
+                tues:{
+                    open:10,
+                    close:11
+                },
+                thur:{
+                    open:11,
+                    close:10
+                },
+                sat:{
+                    open:9,
+                    close:11
+                }
+            }
+         }
+
+         console.log(restaurant.openingTime.mon);  //if the property is not exsits then it will show undefined.
+         console.log(restaurant.openingTime.tues);
+
+         //use optional chaining
+        //  console.log(restaurant.openingTime.mon.open);
+         console.log(restaurant.openingTime.mon?.open);
+
+         
+    </script>
+</body>
+</html>

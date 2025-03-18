@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6_Operators</title>
+</head>
+<body>
+
+    <script>
+        // const country = ['india','italy','US','UK']
+
+        //Earlier
+
+        // const ind = country[0];
+        // const ity = country[1];
+        // const us = country[2];
+
+        // console.log(ind, ity, us);
+
+        // ---------------------------------------
+
+        //Destructuring
+
+        //Array Destructuring
+
+        const [a,b,c] = ['india','italy','US','UK'];   //const [] -> destructuring  [a,b,c]->[0th index(india), 1st index(italy), 2nd index(us)]
+        console.log(a,b,c);
+
+        //Nested Array
+
+        const nations = ['india','italy',[['US','UK'],'UAE']];
+
+        console.log(nations.length);        // india -1, italy -2, [[US,UK], UAE] -3
+
+        console.log(nations[2][1]);  //UAE
+        console.log(nations[2][0][1]); //UK
+
+        //to store in a variable
+
+        const [i,j,[[k,l],m]] = ['india','italy',[['US','UK'],'UAE']];
+        console.log(i,j,k,l,m);
+
+        //ignoring the values inside an array
+
+        const[x,,,y] = ['india','italy','US','UK','UAE'];   // [x, ,, y] - it ignores two elements.
+        console.log(x,y);
+
+        //if we are decalring the value in destrcturing array element but we doen't have a value in it, it shows undefined.
+
+        // const [o,p,q] = [1,2]   -> here q is undefined
+        // console.log(o,p,q);
+
+        //to avoid this we have to give default values.
+
+        const [o,p,q=3] = [1,2]
+        console.log(o,p,q);
+
+// --------------------------------------------------------------------
+        
+// Object Destructuring
+
+        const person = {
+            p_name:'john',
+            age:35,
+            hobbies:['sketching','cycling','reading'],
+            city:'mumbai',
+            country:'india'
+        }
+
+//here, based on keys we can desturcture
+
+        const {p_name, city, hobbies} = person;
+        console.log(p_name , city, hobbies);
+
+
+// Nested Object
+
+        const obj = {
+            a:1,
+            b:{c:2,d:3},
+            e:4
+        }
+
+        //Normal way
+        // console.log(obj.b.d);
+
+
+        const {b:{d}} = {
+
+            a:1,
+            b:{c:2,d:3},
+            e:4
+        }
+
+        console.log(d);
+
+        
+        //Renaming the variable name in object
+
+        const {p_name : first_name} = person;
+        console.log(first_name);
+
+
+        //Default value in destructuring in obj
+
+        const person2 = {
+            p_name:'john',
+            age:35,
+            hobbies:['sketching','cycling','reading'],
+            city:'mumbai',
+            country:'india',
+            // occupation:'s/w engineer'
+        }
+
+        const {age,occupation = 'software engineer'} = person2;            // here, {occupation} is a default value(Function variable) not a global variable. on the time of execution it will be called and value will be assigned to occupation variable.
+        console.log(occupation);
+        console.log(person2);
+
+
+        //Spread Operator           - Expands an array or object into individual elements
+
+        //normal way
+
+        // const fruits = ['apple','mango','pomegranate'];
+        // const veggies = ['carrot', 'beans', 'tomato'];
+
+        //concatination  //returns string
+        // console.log(fruits + veggies);
+
+        //returns array
+        // console.log(fruits.concat(veggies));
+
+// -------------------------------
+
+        //using spread operator   //returns array value
+
+        // const fruits = ['apple','mango','pomegranate'];
+        // const veggies = ['carrot', 'beans', 'tomato',...fruits];
+        // console.log(veggies);
+
+        //we can add multiple array in spread operator
+        const fruits = ['apple','mango','pomegranate'];
+        const veggies = ['carrot', 'beans', 'tomato'];
+        const juice = ['mosambi','lime',...fruits,...veggies];
+        console.log(juice)
+
+        const veg = ['carrot','beans',...fruits];
+        const juice_one = ['mosambi','lime',...veg];
+        console.log(juice_one);
+
+        //spread operator in obejcts
+
+        const person_one = {
+            name:'alex',
+            age:30
+        }
+
+        const new_person = {...person_one};
+        console.log(new_person);
+
+        //you can add new properties to the new object
+        const new_person2 = {...person_one, occupation:'software engineer'}
+        console.log(new_person2);
+   
+        // ----------------------------------------------------------------------
+
+        //Rest Pattern - helps to store unmapped values into an array or object.  Collects multiple values into an array.
+        
+        // It is particularly useful when dealing with functions, array destructuring, and object destructuring where you want to handle remaining values dynamically.
+        //mapped - storing inside a variable
+        //unmapped - not storing inside a variable. like... const[a1,a2,a3] = ['chennai,bangalore','kolkata']. here newdelhi is not storing inside variable. so it is unmapped. 
+        
+        //If we destructure an array that has more elements than expected, extra values are ignored that's why we go with rest pattern
+
+        const cities = ['chennai','bangalore','kolkata','newdelhi'];
+
+        const [a1,a2,a3,...rest] = cities;          //here we can name any not only rest.
+        console.log(rest);   // it creates an array
+        console.log(a1,a2,a3);
+
+        const [...others] = cities;
+        console.log(others);
+
+
+//Normal way
+    //     function add(numbers){                            // number is a parameter 
+
+    //     for(let i=0;i<numbers.length;i++){
+    //         console.log(numbers[i]);
+    //     }
+
+    // }
+    // add([2,3,4,5])
+    // add(2,3,4,5)   // it is not working  
+
+
+
+        // const num = [2,3,4,5];
+
+        // function add(numbers){                            // number is a parameter 
+
+        //     for(let i=0;i<numbers.length;i++){
+        //         console.log(num[i]);
+        //     }
+
+        // }
+        // add(num)          //we are passing array value to this arguments.
+
+
+       //when we use rest pattern
+
+       const num = [2,3,4,5];
+
+function add(...numbers){                  // for parameter rest pattern & for arguments spread pattern.           
+
+    for(let i=0;i<numbers.length;i++){
+        console.log(num[i]);
+    }
+
+}
+add(...num)            //when we use spread operator in argument it is not working and it takes only one value like 2,3,4,5 so we need to add rest pattern to parameter as well
+
+    </script>
+</body>
+</html>
