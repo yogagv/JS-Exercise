@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Functions(ES6)</title>
+</head>
+<body>
+    <script>
+        /*
+
+        Function - Function is a set of statement that can be executed to perform a specific task.
+
+        First Class Function - The JS treating function as a value is called as First class function.
+
+        Functions are treated as simply values.
+
+        Functions are another type of object. Objects are consists functions as value.
+
+         */
+
+        //  First Class Function
+
+        let add = function() {           // add -variable, function(){} - value
+
+            return 3 + 4
+        }
+        console.log(add());
+
+        //First class fucntion helps to create a higher order function
+
+        //Higher Order Function - A function returns another function or a function takes another function as an arguments is called as Higher Order Function.
+
+        let x = 10;
+
+        function print(a){
+
+            console.log(a)
+        }
+        print(add);   // here print function receives another function(add) as an argument that's why we called it as Higher Order Function.
+        print(add()); // -> it returns value 7
+
+/////////////////////////////////////////////////////
+
+        function fun(){
+
+            return function(){
+                console.log('a')
+            }
+        }
+        const res = fun();    //here fun function returns another function that's why we call it as higher order function.
+        res();        //we call the varibale name res coz it is for return function calling.
+
+        //or we can call like
+        // fun()();
+    </script>
+</body>
+</html>
