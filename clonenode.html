@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid black;
+        }
+
+        .container {
+
+            display: flex;
+        }
+
+        .flexitem {
+
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <section class="container box">
+        <div class="flexitem box">Peter</div>
+        <div class="flexitem box">Ram</div>
+        <div class="flexitem box">Suresh</div>
+    </section>
+
+    <script>
+        //creating parent element
+
+        const parentEle = document.createElement('section');
+
+        const divEle1 = document.createElement('div');
+        const divEel2 = divEle1.cloneNode();
+        const divEle3 = divEle1.cloneNode();
+
+        const txt1 = document.createTextNode('Peter');
+        const txt2 = document.createTextNode('Ram');
+        const txt3 = document.createTextNode('Suresh');
+
+        //inserting child element into parent element
+
+        parentEle.appendChild(divEle1);
+        parentEle.appendChild(divEel2);
+        parentEle.appendChild(divEle3);
+
+        divEle1.appendChild(txt1);
+        divEel2.appendChild(txt2);
+        divEle3.appendChild(txt3);
+
+        //create the attribute inside the element
+
+        parentEle.setAttribute('class', 'container box');
+        divEle1.setAttribute('class', 'flexitem box');
+        divEel2.setAttribute('class', 'flexitem box');
+        divEle3.setAttribute('class', 'flexitem box');
+
+        document.body.appendChild(parentEle);
+        // document.querySelector('body').appendChild(parentEle);
+    </script>
+</body>
+</html>

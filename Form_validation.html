@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: '#F0F2F5';
+        }
+
+        h1{
+            color: #0866FF;
+            text-align: center;
+        }
+
+        h3{
+            padding: 0px 80px;
+        }
+
+        form {
+            border: 5px solid #faf6f6;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: 350px;
+            padding: 20px;
+            margin: 50px 560px;
+        }
+
+        form input {
+            margin: 10px;
+            width: 90%;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #DDDFE2;
+        }
+
+        .dNone{
+            display: none;
+        }
+
+        #Button{
+            width: 92%;
+            background-color: #0866FF;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            display: none;
+        }
+
+        h5 {
+            text-align: center;
+            color: #0866FF; 
+        }
+
+        h5 a {
+            text-decoration: none;
+        }
+
+        #Gbutton{
+            width: 92%;
+            background-color: #42b72a;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        #eErr, #pErr{
+            font-size: 15px;
+            color: red;
+            padding-left: 10px;
+        }
+
+
+        #eErr a {
+            text-decoration: none;
+            color: red;
+            font-weight: 800;
+        }
+
+        #success{
+            color: green;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>facebook</h1>
+        <form>
+            <h3>Log in to Facebook</h3>
+            <input type="text" id="Email" placeholder="Email address or phone number">
+            <span class="dNone" id="eErr">The email address or mobile number you entered isn't connected to an account.<a href="#">Find your account and log in.</a></span>
+            
+            <input type="password" id="Password" placeholder="Password">
+            <span class="dNone" id="pErr">Enter the password</span>
+            
+            </br>
+            <input type="button" id="Button" value="Log in">
+
+            <p id="success">Login Successful!</p>
+
+            <h5><a href="#">Forgotten password</a></h5>
+            <hr/>
+            <input type="button" id="Gbutton" name="Create new account" value="Create new account">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('Button').addEventListener('click', ()=>{
+            const email = document.getElementById('Email').value;
+            const pwd = document.getElementById('Password').value;
+                 
+            if(email == ''){
+                document.getElementById('eErr').style.display = 'block';
+                document.getElementById('Email').style.border = '1px solid red';
+            }else{
+                document.getElementById('eErr').style.display = 'none';
+                document.getElementById('Email').style.border = '1px solid green';
+            }
+            if(pwd == ''){
+                document.getElementById('pErr').style.display = 'block';
+                document.getElementById('Password').style.border = '1px solid red';
+            }else{
+                document.getElementById('pErr').style.display = 'none';
+                document.getElementById('Password').style.border = '1px solid green';
+            }
+            if(email!= '' && pwd!= ''){
+                document.getElementById('success').style.display = 'block'
+            }
+        })
+    </script>
+</body>
+</html>

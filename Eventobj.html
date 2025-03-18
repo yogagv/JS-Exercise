@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Object</title>
+    <style>
+        section {
+            border: 1px solid black;
+            margin: 20px;
+        }
+
+        div {
+
+            border: 2px solid red;
+            border-radius: 10px;
+            margin: 20px;   
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+        button {
+            padding: 20px;
+            color: white;
+            border-radius: 5px;
+            background-color: hotpink;
+            border: none;
+            margin-left: 47%;
+            margin-bottom: 20px;
+        }
+
+        form {
+           text-align: center;
+        }
+
+        #btn {
+
+            padding: 20px;
+            color: white;
+            border-radius: 5px;
+            background-color: hotpink;
+            border: none;
+            margin-left: 1%;
+            margin-bottom: 20px;
+            margin-top: 20px;            
+        }
+
+        li {
+
+            border: 1px solid black;
+            list-style: none;
+            font-size: medium;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .highlight {
+
+            background-color: hotpink;
+            color: whitesmoke;
+        }
+
+        .anotherClass {
+  text-align: center;
+  font-size: 25px;
+}
+
+    </style>
+</head>
+<body>
+   <section>
+    <h2>Event Object</h2>
+    <button>Click Me</button>
+   </section>
+
+   <section>
+   <form action="">
+    <label for="name">Name</label><br>
+    <input type="text" id="name"/><br>
+    <label for="email">Email</label><br>
+    <input type="text" id="email"/><br>
+    <label for="mobno">Mob No</label><br>
+    <input type="text" id="mobno"/><br>
+    <button type="submit" id="btn">Submit</button>
+   </form>
+   </section>
+
+   <section>
+    <h2>Event Propagation</h2>
+    <button class="eventpro">Click Me</button>
+   </section>
+
+   <section>
+    <h2>Event Propagation</h2>
+    <div id="grandparent">
+        I am Grand Parent
+        <div id="parent">
+            I am Parent
+            <div id="child">
+                I am Child
+            </div>
+        </div>
+    </div>
+   </section>
+
+   <section>
+    <h2>Event Deligation</h2>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+   </section>
+   <script src="Eventobj.js"></script>
+</body>
+</html>

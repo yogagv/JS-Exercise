@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container_box {
+
+            display: flex;
+            padding: 20px;
+            border: 1px solid green;
+        }
+
+        .flex-item {
+
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- <section id="container_box">
+        <div class="flex-item">List1</div>
+        <div class="flex-item">List2</div>
+        <div class="flex-item">List3</div>
+        <div class="flex-item">List4</div>
+    </section> -->
+
+    <script>
+        const cars = ['Ferrari', 'porsche', 'lamborgheni', 'BMW'];
+
+    //     const parentEle = `<section id="container_box">
+    //     <div class="flex-item">${cars[0]}</div>
+    //     <div class="flex-item">${cars[1]}</div>
+    //     <div class="flex-item">${cars[2]}</div>
+    //     <div class="flex-item">${cars[3]}</div>
+    // </section>`
+
+    let ele = '';
+
+    for(let i=0; i<cars.length; i++){
+        ele += `<div class="flex-item">${cars[i]}</div>`
+    }
+
+    const parentEle = `<section id="container_box">${ele}</section>`
+
+        document.getElementsByTagName('body')[0].innerHTML = parentEle;
+
+        
+    </script>
+</body>
+</html>

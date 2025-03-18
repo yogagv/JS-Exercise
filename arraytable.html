@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Table</title>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        table {
+
+            width:100%;
+	        border:1px solid black;
+            margin-top: 15px;
+        }
+
+        thead {
+
+            background:burlywood;
+            padding: 20px;
+        }
+
+        tr {
+            color: #000;
+           
+        }
+
+        th {
+
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        tbody tr:nth-of-type(odd) {
+
+            background-color: white;
+        }
+
+        tbody tr:nth-of-type(even) {
+
+            background-color: burlywood;
+        }
+
+        tbody td{
+
+            text-align: center;
+            padding: 10px;
+            border: 1px solid black;  
+
+        }
+
+        .darkmode {
+
+            background-color: #000;
+            color: #fff;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <button>Click Me</button>
+    <h2>Student Details</h2>
+    <table id="tData">
+        <thead>
+            <tr>
+                <th>Reg No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Occupation</th>
+            </tr>
+        </thead>
+        <tbody id="tabledata">
+
+        </tbody>
+    </table>
+    <script>
+
+        const employee = [
+
+            {
+                rno:1,
+                name:'yoga',
+                age:28,
+                gender:'Male',
+                occupation:'Software Developer'
+            },
+
+            {
+                rno:2,
+                name:'ram',
+                age:28,
+                gender:'Male',
+                occupation:'Technical support'
+            },
+
+            {
+                rno:3,
+                name:'mano',
+                age:29,
+                gender:'Male',
+                occupation:'Cybersecurity Analyst'
+            },
+
+            {
+                rno:4,
+                name:'yokesh',
+                age:32,
+                gender:'Male',
+                occupation:'Staff Driver'
+            },
+
+        ]
+
+            const tableData = document.getElementById('tabledata');
+            employee.forEach(emp=>{
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${emp.rno}</td>
+                <td>${emp.name}</td>
+                <td>${emp.age}</td>
+                <td>${emp.gender}</td>
+                <td>${emp.occupation}</td>
+                `;
+
+                tableData.appendChild(row);
+            });
+
+            const darkBody = document.querySelector('body')
+            const dark = document.getElementsByTagName('button')[0]
+            dark.addEventListener('click', ()=>{
+            darkBody.classList.toggle('darkmode')
+                
+            });
+
+
+    </script>
+</body>
+</html>

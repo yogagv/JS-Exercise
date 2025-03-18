@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6_Operators</title>
+</head>
+<body>
+
+    <script>
+        // const country = ['india','italy','US','UK']
+
+        //Earlier
+
+        // const ind = country[0];
+        // const ity = country[1];
+        // const us = country[2];
+
+        // console.log(ind, ity, us);
+
+        // ---------------------------------------
+
+        //Destructuring
+
+        //Array Destructuring
+
+        const [a,b,c] = ['india','italy','US','UK'];   //const [] -> destructuring  [a,b,c]->[0th index(india), 1st index(italy), 2nd index(us)]
+        console.log(a,b,c);
+
+        //Nested Array
+
+        const nations = ['india','italy',[['US','UK'],'UAE']];
+
+        console.log(nations.length);        // india -1, italy -2, [[US,UK], UAE] -3
+
+        console.log(nations[2][1]);  //UAE
+        console.log(nations[2][0][1]); //UK
+
+        //to store in a variable
+
+        const [i,j,[[k,l],m]] = ['india','italy',[['US','UK'],'UAE']];
+        console.log(i,j,k,l,m);
+
+        //ignoring the values inside an array
+
+        const[x,,,y] = ['india','italy','US','UK','UAE'];   // [x, ,, y] - it ignores two elements.
+        console.log(x,y);
+
+        //if we are decalring the value in destrcturing array element but we doen't have a value in it, it shows undefined.
+
+        // const [o,p,q] = [1,2]   -> here q is undefined
+        // console.log(o,p,q);
+
+        //to avoid this we have to give default values.
+
+        const [o,p,q=3] = [1,2]
+        console.log(o,p,q);
+
+// --------------------------------------------------------------------
+        
+// Object Destructuring
+
+        const person = {
+            p_name:'john',
+            age:35,
+            hobbies:['sketching','cycling','reading'],
+            city:'mumbai',
+            country:'india'
+        }
+
+//here, based on keys we can desturcture
+
+        const {p_name, city, hobbies} = person;
+        console.log(p_name , city, hobbies);
+
+
+// Nested Object
+
+        const obj = {
+            a:1,
+            b:{c:2,d:3},
+            e:4
+        }
+
+        //Normal way
+        // console.log(obj.b.d);
+
+
+        const {b:{d}} = {
+
+            a:1,
+            b:{c:2,d:3},
+            e:4
+        }
+
+        console.log(d);
+
+        
+        //Renaming the variable name in object
+
+        const {p_name : first_name} = person;
+        console.log(first_name);
+
+
+        //Default value in destructuring in obj
+
+        const person2 = {
+            p_name:'john',
+            age:35,
+            hobbies:['sketching','cycling','reading'],
+            city:'mumbai',
+            country:'india',
+            // occupation:'s/w engineer'
+        }
+
+        const {age,occupation = 'software engineer'} = person2;            // here, {occupation} is a default value(Function variable) not a global variable. on the time of execution it will be called and value will be assigned to occupation variable.
+        console.log(occupation);
+        console.log(person2);
+
+
+    </script>
+</body>
+</html>

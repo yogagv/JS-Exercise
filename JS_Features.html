@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <button>Click me</button>
+    <p id="demo"></p>
+
+
+    <script>
+
+
+    // 'use strict' - Defines that JavaScript code should be executed in "strict mode".
+    // The “use strict” is the literal expression that enables strict mode for JavaScript. 
+    // It is added at the top of a JavaScript file, function, or block, and tells the JavaScript engine to run the code in strict mode. In other words, this mode brings in a stricter set of rules for writing JavaScript with more warnings and throwing more errors.
+        
+    //    'use strict'
+    //    let x = 10;
+
+    // x = 10;
+    // console.log(x);
+
+// --------------------------------------------
+
+        // function add(a,b){
+
+        //     return a + b
+        // }
+        // console.log(add(2,3));
+
+ 
+        //Duplicating the character
+
+        //it is not working when use 'use strict' mode
+
+        // function add(a,a){
+
+        // return a * a
+        // }
+        // console.log(add(4,2));
+
+
+        // 'use strict'
+
+        // var NaN = 10;
+        // console.log(NaN);
+
+
+        // Javascript Features
+
+        /* 1. High Level
+
+            JavaScript automatically manages memory allocation and garbage collection, making coding easier.
+
+            let name = "Alex";  // No need to define data types
+            console.log(name);  // Output: Alex
+
+
+        -----------------------------------------------------------------
+           2. Garbage Collection
+
+            Garbage Collection (GC) is the automatic memory management process where the JavaScript engine automatically frees up memory by removing unused 
+            objects from memory to optimize performance.
+
+            JavaScript uses a reference-counting mechanism and Mark-and-Sweep algorithm to manage memory.
+
+            Reference Counting:
+
+            If an object has no references, it is considered garbage and can be collected.
+            let obj = { name: "Mayuras" };
+            obj = null; // Now the object is unreachable and eligible for garbage collection
+
+            Mark-and-Sweep Algorithm (Modern Method):
+
+            Mark Phase: The garbage collector marks all accessible objects.
+            Sweep Phase: It removes all unmarked objects.
+
+            function createObject() {
+            let person = { name: "Alex" }; // 'person' is reachable
+            }
+            createObject();
+            // 'person' becomes unreachable after the function call ends
+
+
+            What is Unreachable?
+            An object is unreachable if there are no references to it.
+
+
+            let a = { name: "Mayuras" };
+            let b = a; // Both 'a' and 'b' reference the same object
+            a = null; // The object is still reachable through 'b'
+            b = null; // Now the object is unreachable and eligible for GC
+
+
+------------------------------------------------------------------------
+
+
+           3. Interpreter or JIT(Just in time) -> now a days we use this. - Code is executed line-by-line, making it faster for small applications without needing a compiler.
+           
+           console.log("Hello, World!"); // Directly executed by the browser
+
+
+---------------------------------------------------------------------------           
+           
+           4. Multiparadigm
+
+7
+           JavaScript is a multi-paradigm language that gives developers the freedom to write code using procedural, 
+           object-oriented, or functional approaches
+
+
+           Procedural Programming:
+           Code is organized into procedures (functions) and executed step by step.
+
+           function greet(name) {
+           console.log("Hello, " + name);
+           }
+           greet("Alex");
+
+
+           Object-Oriented Programming (OOP):
+           JavaScript supports objects, classes, and inheritance.
+
+           class Person {
+        constructor(name, age) {
+           this.name = name;
+           this.age = age;
+         }
+        greet() {
+        console.log(`Hello, I am ${this.name}`);
+       }
+    }
+let person1 = new Person("Alex", 17);
+person1.greet();
+
+
+            Functional Programming:
+            Functions are treated as first-class citizens and can be passed as arguments or returned from other functions.
+
+
+            const add = (a, b) => a + b;
+
+            function calculate(a, b, operation) {
+            return operation(a, b);
+            }
+
+            console.log(calculate(10, 5, add)); 
+
+-----------------------------------------------------------------
+
+           5. Prototype-based OOP  - Objects inherit properties and methods from other objects.
+
+           Whenever we are creating object, prototype object wiil be connected to original object. (it has object properties like., hasOwnProperty)
+              const obj = {
+                    
+              a:1;
+              }
+              console.log(obj);
+
+---------------------------------------------------------
+
+           6. Dynamic and loosly coupled
+
+           
+           let x = 1;
+           x = 2;
+           console.log(x)
+
+           lex y = 1;
+           y = 'a'
+           console.log(y);
+
+--------------------------------------------------------           
+
+           7. Single threaded & non blocking event loop
+
+         *   A single-threaded system means that only one thread is executed at a time within a process. In simpler terms, tasks are executed one after another in a sequential manner, without concurrent execution.
+
+          *  Non-blocking event loop means that the event loop is not blocked by any task. It can continue.
+
+          *   JS is a synchronoue function but it acts as asynchronous it doesn't wait for the button clicked. so it executes 'JS feature' in console log.
+         
+         *   Imagine you're at a ticket counter, and there's only one person issuing tickets. The person helps one customer at a time — they finish helping one customer before moving on to the next.
+
+In programming, single-threaded systems work exactly like this — they perform one task at a time.
+
+         *     A thread is like a worker that performs tasks. In a single-threaded system:
+
+                The worker starts one task.
+                The worker completes the task.
+                Only after finishing the task, the worker starts the next task.
+
+
+          Let's say you're using a food delivery app:
+
+             The app requests the restaurant menu (Task 1).
+             It waits to get the menu.
+             Then, it shows you the menu (Task 2).
+             Only after showing the menu, it allows you to place an order (Task 3).
+             If Task 1 takes 5 seconds, Task 2 has to wait until Task 1 is done.
+
+
+
+
+                 const btn = document.querySelector('button')
+                 btn.addEventListener('click', ()=>{
+                    console.log('Button is Clicked');
+                 })
+                 
+                 console.log('Js Features!');
+           
+        */
+          
+        // console.log('start')
+
+        // setTimeout(() => {
+
+        //     console.log('call back')
+            
+        // }, 5000);
+
+        // console.log('End');
+
+//SPREAD OPERATOR
+//--------------------
+
+// const q1 = ["Jan", "Feb", "Mar"];
+// const q2 = ["Apr", "May", "Jun"];
+// const q3 = ["Jul", "Aug", "Sep"];
+// const q4 = ["Oct", "Nov", "May"];
+
+// const year = [...q1, ...q2, ...q3, ...q4];
+// document.getElementById("demo").innerHTML = year;
+
+
+let stu_name = { name: "Mayuras" };
+            let ne_name = stu_name; // Both 'a' and 'b' reference the same object
+            // stu_name = null; // The object is still reachable through 'b'
+            ne_name = null;
+           console.log(stu_name);                      // Now the object is unreachable and eligible for GC
+
+
+const q1 = ["Jan", "Feb", "Mar"];
+const q2 = [...q1, "Apr", "May", "Jun"];
+const q3 = [...q2, "Jul", "Aug", "Sep"];
+const q4 = [...q3, "Oct", "Nov", "May"];
+
+const year = [q4];
+document.getElementById("demo").innerHTML = year;
+
+
+
+
+let a = [10, 20];
+let b = [...a, 30, 40];
+console.log(b);
+
+
+           let y = 1;
+           y = 'a'
+           console.log(y);
+
+// const words = ["spray", "elite", "exuberant", "destruction", "present"];
+
+// const result = words.filter((word) => word.length > 6);
+
+// console.log(result);
+
+        
+    </script>
+
+</body>
+</html>

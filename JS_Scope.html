@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Scope</title>
+</head>
+<body>
+    
+    <script>
+
+
+// scopes in JS
+
+//Scope in JavaScript is important for managing variable access and avoiding conflicts. 
+// It determines where a variable can be accessed and helps in organizing code, preventing errors, 
+// and improving performance.
+
+// Preventing Variable Conflicts (Avoiding Naming Collisions)
+
+// In large applications, multiple developers may use the same variable names.
+// Scope ensures that variables don't accidentally overwrite each other.
+
+// function userLogin() {
+//     let username = "John";
+//     console.log(username);
+// }
+
+// function adminLogin() {
+//     let username = "Admin";
+//     console.log(username);
+// }
+
+// userLogin(); // John
+// adminLogin(); // Admin
+
+
+// Encapsulation (Data Privacy)
+
+// Scope helps in hiding variables from outside interference.
+// This is useful in APIs, libraries, and modular applications.
+
+
+// function BankAccount() {
+//     let balance = 1000; // Private variable
+    
+//     return {
+//         getBalance: function() {
+//             return balance;
+//         }
+//     };
+// }
+
+// const myAccount = BankAccount();
+// console.log(myAccount.getBalance()); // 1000
+// console.log(myAccount.balance); // Undefined (cannot access private variable)
+
+
+
+// Memory Optimization
+
+// Variables go out of scope when they are no longer needed.
+// This helps in freeing memory and improving performance.
+
+// function fetchData() {
+//     let tempData = "Loading...";
+//     console.log(tempData);
+// }
+// fetchData(); 
+// After function execution, tempData is removed from memory.
+
+
+
+// 1. Global Scope
+// 2. Function Scope
+// 3. Block Scope (ES6)  - let & const are block scope.  Variables declared inside a { } block cannot be accessed from outside the block.
+
+
+// Global scope - accessible from anywhere in the code
+
+      const name = 'Mayuras Technologies';
+      
+      function first(){
+
+        //Function Scope - Availbale only inside the function
+
+            let a = 5;
+            let b = second();
+
+            a = a+b;
+            return a;
+      }
+
+
+      function second() {
+
+        let c =10;
+        return c;
+   
+    }
+
+    //Global Scope - Available everywhere in the code
+
+    let x = first();
+    console.log(x);
+
+
+
+    //Global Scope
+
+    let a = 'Mayuras';
+    let b = true;
+    let z = 6;
+
+    
+    // Function Scope 
+
+    
+    function add() {
+
+        //Functional Scope Blog
+
+        // console.log(num3);  //hoisting
+
+        // console.log(num2);  - > cannot access before initialization.
+
+        let num1 = 10;
+        const num2 = 20;
+        var num3 = 30;    // var - functional scope
+
+        // console.log(num1);
+        // console.log(num2);
+        // console.log(num3);
+
+        return num1 + num2 
+
+    }
+
+   
+    // console.log(num1);  // it throws reference error because num1 is not accessible outside the function add().
+    console.log(add());
+    // console.log(num3);
+
+    
+    
+    //Noraml Blog
+
+    if(true){
+
+        const city = 'chennai';
+        let state = 'TN';
+        var country = 'India';
+
+        // console.log(city);
+        // console.log(state);
+
+    }
+
+    console.log(country);
+    // console.log(city);
+    // console.log(state);
+
+
+    const stu_name = 'peter';
+
+    function first_stu(){
+
+        let age =25;
+
+        if( age >= 20 ) {
+
+            const decade = 20;
+            var elder = true;
+        }
+
+        function second_stu(){
+
+            const job = 'Engineering';
+            console.log(`${name} is ${age} years old and focus on ${job}`);
+        }
+
+        second_stu();
+    }
+
+    first_stu();
+
+    </script>
+</body>
+</html>

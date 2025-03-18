@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const student = [
+            {
+            id: 1001,
+            name: 'Alex',
+            },
+            {
+            id: 1002,
+            name: 'Paul',
+            },
+            {
+            id: 1003,
+            name: 'Ranveer',
+            }
+    ];
+
+            let stu = `<table border=1>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                    </tr>
+                    </thead>
+                    <tbody>`        
+            for(let i=0; i<student.length; i++){
+
+                stu+= `
+                    <tr>
+                        <td>${student[i].id}</td>
+                        <td>${student[i].name}</td>
+                    </tr>`
+                    
+            }
+
+            `</tbody>
+                    </table>`
+
+                    
+            // const stuEle = `<section>${stu}</section>`
+            document.body.innerHTML = stu;
+
+
+
+            //Create a new element
+            //The appendChild() method in JavaScript is used to add a new node (element) as the last child of a specified parent node in the DOM
+            //document.body - parent node , para - child node 
+            const para = document.createElement("h1");
+            para.innerText = "This is a paragraph";
+            document.body.appendChild(para);
+
+            // Create a new <div> element
+            const newDiv = document.createElement("div");
+
+            // Add some text content to the <div>
+            newDiv.innerText = "Hello, this is a new div!";
+
+            // Set an ID attribute for the <div>
+            newDiv.id = "myNewDiv";
+
+            // Apply some styles
+            newDiv.style.color = '#bab86c';
+            newDiv.style.fontSize = "20px";
+
+            // Append the new <div> to the body or another existing element
+            document.body.appendChild(newDiv);
+
+    </script>
+</body>
+</html>

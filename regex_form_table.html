@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form-Regular Expression</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+
+        body {
+
+            background-color: blanchedalmond;
+        }
+
+        .container {
+
+            margin: 20px;
+            padding: 20px;
+            background-color: blanchedalmond;
+        }
+
+        form {
+
+            background-color: rgb(25, 223, 223);
+        }
+
+        h1 {
+            
+            text-align: center;
+            color: burlywood;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        form {
+
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 30px;
+            border-radius: 10px;
+            margin-left: 510px;
+            width: 25%;
+            height: 30%;
+            align-items: center;
+        }
+
+        label {
+
+            padding-left: 5px;
+        }
+
+        input, select {
+
+            padding: 10px;
+            margin: 5px;
+            width: 75%;
+        }
+
+        #btnvalue {
+
+            padding: 10px;
+            margin: 5px;
+            /* background-color: burlywood;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            padding: 12px;
+            width: 25%;
+            font-weight: bold; */
+        }
+
+        #nameerror, #emailerror, #pwderror, #phoneerror, #occupationerror {
+
+            padding-left: 5px;
+        }
+
+        .input-field:focus {
+
+            outline: none;
+            border: 1px solid burlywood;
+        }
+
+        #tableData {
+
+	        width:100%;
+	        border:none;
+            margin-top: 15px;
+        }
+
+        thead {
+
+           
+	        background:burlywood;
+            padding: 20px;
+        }
+
+        tr {
+            color: #000;
+        }
+
+        th {
+
+            padding: 10px;
+        }
+
+        tbody tr:nth-of-type(odd) {
+
+            background-color: white;
+        }
+
+        tbody tr:nth-of-type(even) {
+
+            background-color: burlywood;
+        }
+
+        tbody td{
+            
+            text-align: center;
+            padding: 10px;
+            
+        }
+
+        .actionbtn {
+
+            background-color: rgb(25, 223, 223);
+            color: black;
+            border: 1px solid rgb(25, 223, 223);
+            border-radius: 5px;
+            padding: 6px;
+        }
+
+        .actionbtn:hover {
+
+            background-color: burlywood;
+            border: 1px soild burlywood;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Registration</h1>
+        <form id="data-form">
+            <div class="form_first">
+                <div class="details_personal">
+                    <div>
+                        <div class="input-icon">
+                            <label>Fullname</label></br>
+                            <input type="text" id="namevalue" class="input-field" placeholder="Enter your name"/></br>
+                            <span id="nameerror" class="error"></span>
+                        </div>
+
+
+                        <div class="input-icon">
+                            <label>Email</label></br>
+                            <input type="email" id="emailvalue" class="input-field" placeholder="Enter your email"/></br>
+                            <span id="emailerror" class="error"></span>
+                        </div>
+
+
+                        <div class="input-icon">
+                            <label>Password</label></br>
+                            <input type="password" id="pwdvalue" class="input-field" placeholder="Enter your password"/></br>
+                            <span id="pwderror" class="error"></span>
+                        </div>
+
+
+                        <div class="input-icon">
+                            <label>Mobile no</label></br>
+                            <input type="text" id="phonevalue" class="input-field" placeholder="Enter your mobile no"/></br>
+                            <span id="phoneerror" class="error"></span>
+                        </div>
+
+
+                        <div class="input-icon">
+                            <label>Gender</label></br>
+                            <select name="gender" id="gendervalue">
+                                <option disabled selected value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="transgender">Transgender</option>
+                            </select>
+                            <span id="gendererror" class="error"></span>
+                        </div>
+
+
+                        <div class="input-icon">
+                            <label>Occupation</label></br>
+                            <input type="text" id="occupationvalue" class="input-field" placeholder="Enter your occupation"/></br>
+                            <span id="occupationerror" class="error"></span>
+                        </div>
+
+                        <div>
+                            <button id="btnvalue" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+
+        <table id="tableData">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Mobile No</th>
+                    <th>Gender</th>
+                    <th>Occupation</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="regexFromTable.js"></script>
+</body>
+</html>

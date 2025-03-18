@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Filtering</title>
+    <style>
+        .active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .menu-items {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .menu-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Menu Category</h2>
+    <div id="categories">
+        <button class="category-btn active" data-category="All Menus">All Menus</button>
+        <button class="category-btn" data-category="Burger">Burger</button>
+        <button class="category-btn" data-category="Pizza">Pizza</button>
+        <button class="category-btn" data-category="Coffee">Coffee</button>
+        <button class="category-btn" data-category="Healthy">Healthy</button>
+    </div>
+
+    <h2>Choose Order</h2>
+    <div id="menu-container" class="menu-items"></div>
+
+    <script>
+        const menuItems = [
+            { id: 1, name: "Shrimp Soup", category: "Healthy", price: 300, img: "shrimp-soup.jpg" },
+            { id: 2, name: "Pizza", category: "Pizza", price: 255, img: "pizza.jpg" },
+            { id: 3, name: "Vegetable Burger", category: "Burger", price: 280, img: "burger.jpg" },
+            { id: 4, name: "Coffee", category: "Coffee", price: 290, img: "coffee.jpg" },
+        ];
+
+        const menuContainer = document.getElementById("menu-container");
+        const categoryButtons = document.querySelectorAll(".category-btn");
+
+        function displayMenu(filteredItems) {
+            menuContainer.innerHTML = ""; // Clear previous items
+            filteredItems.forEach(item => {
+                const menuCard = document.createElement("div");
+                menuCard.classList.add("menu-card");
+                menuCard.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}" width="100">
+                    <h3>${item.name}</h3>
+                    <p>₹ ${item.price}</p>
+                `;
+                menuContainer.appendChild(menuCard);
+            });
+        }
+
+        function filterMenu(category) {
+            let filteredItems = category === "All Menus"
+                ? menuItems
+                : menuItems.filter(item => item.category === category);
+
+            displayMenu(filteredItems);
+        }
+
+        // Add event listeners to category buttons
+        categoryButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                document.querySelector(".active").classList.remove("active"); // Remove active class
+                this.classList.add("active"); // Add active class
+
+                const selectedCategory = this.getAttribute("data-category");
+                filterMenu(selectedCategory);
+            });
+        });
+
+        // Load all items initially
+        displayMenu(menuItems);
+
+
+        const user = [
+            {name:'yoga', age:28},
+            {name:'ram', age:27},
+            {name:'mano', age:29},
+        ]
+
+        const userMap = user.map((user)=>user.name);
+        console.log(userMap);
+
+    </script>
+
+</body>
+</html>

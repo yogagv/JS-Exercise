@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark-mode</title>
+    <style>
+        body{
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        #dark-btn {
+
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px;
+            border: none;
+            background-color: burlywood;
+            color: black;
+        }
+
+        .dark-mode {
+
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="dark">
+    <button id="dark-btn">Enable Dark Mode</button>
+    <h2>This is Light mode</h2>
+</div>
+    <script>
+        const dark = document.querySelector('body');
+        const darkBtn = document.querySelector('#dark-btn');
+        const modeText =document.querySelector('h2')
+
+        darkBtn.addEventListener('click', ()=>{
+            dark.classList.toggle('dark-mode')
+
+            if (dark.classList.contains('dark-mode')) {
+                darkBtn.textContent = 'Disable Dark Mode';
+                modeText.textContent = 'This is Dark Mode';
+            } else {
+                darkBtn.textContent = 'Enable Dark Mode';
+                modeText.textContent = 'This is Light Mode';
+            }
+        });
+    </script>
+</body>
+</html>

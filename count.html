@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count</title>
+    <style>
+        #name-input {
+
+            border-radius: 8px;
+            padding: 5px;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="count-btn">Count</button>
+        <h3 id="count-value">0</h3>
+        <h2 id="input-value"></h2>
+        <input type="text" placeholder="Enter your name" id="name-input">
+    </div>
+    <script>
+        const countbtn = document.getElementById('count-btn');
+        const countValue = document.getElementById('count-value');
+        let count = 0;
+
+        countbtn.addEventListener('click', ()=>{
+
+            
+            count++;
+            countValue.textContent = count;
+        })
+
+        const nameInput = document.querySelector('#name-input');
+        const inputValue = document.querySelector('#input-value');
+
+        nameInput.addEventListener('input', (e)=>{
+            inputValue.textContent = 'Welcome ' + e.target.value + ' to our Academy!';
+        })
+
+
+        
+    </script>
+</body>
+</html>

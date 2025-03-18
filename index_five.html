@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const list = document.createElement('ul');
+
+        const menu = ['Home','About','Testimonials','Contact']
+
+        list.style.display = 'flex'
+
+        for(let i=0; i<menu.length; i++){
+
+            const listItem = document.createElement('li');
+            listItem.textContent = `${menu[i]}`;
+            listItem.style.flex = '1';
+            listItem.style.textAlign = 'center';
+            listItem.style.listStyle = 'none';
+            list.appendChild(listItem);
+
+        }
+
+        document.body.appendChild(list);
+    </script>
+</body>
+</html>

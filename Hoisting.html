@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hositing</title>
+</head>
+<body>
+
+    <h2>Hoisting In JS</h2>
+    <script>
+        //Hoisting
+
+        // Hoisting is a JavaScript mechanism where variables and function declarations are moved (or "hoisted") to the top of 
+        // their containing scope during the compilation phase, before the code is executed.
+
+        // Var in varibale and Function declaration are fully hoisted!
+        //var,let and const are not hoisted in function definition.
+
+        //Hoisting in JavaScript helps improve code flexibility, readability, and execution flow.
+
+        // Variable Hoisting
+
+        // console.log(z);   - //undefined    - undefined is a data type.
+        // var z =10;
+
+        // Both let and const are return the same result like cannot be accessed before declaration
+
+        // let x = 10;
+
+        // function first() {
+        //     console.log('Hello world')      //Hoisting will only work inside the function declaration not function expression.
+        // }
+
+        // first();
+        // console.log(x);
+
+
+        first();
+        console.log(x);
+
+        var x = 10;
+
+        function first() {
+            console.log('Hello world')
+        }
+
+    //    const first = function () {
+    //         console.log('Hello world')
+    //     }
+
+
+
+
+        
+    </script>
+</body>
+</html>

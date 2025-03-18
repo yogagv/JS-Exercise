@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursive Fucntion</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            outline: none;
+            
+        }
+        
+        @media screen and (max-width:768px) {
+            
+            button {
+    display: block;
+    margin: 50vh auto 0; /* Centers horizontally with some vertical space */
+    transform: translateY(-50%);
+  }
+    }
+    
+    </style>
+</head>
+<body>
+
+    <button>Click Me</button>
+
+    <script>
+
+        //  'use strict';
+        //Recursive - A function calls itself inside its body.
+
+        //Normal
+
+//         let j = 0;
+
+//     function print() {
+//     if (j < 5) {
+//         console.log('Hello World');
+//         j++;  
+//         print(); // Recursive call
+//     }
+// }
+
+// print();
+
+
+// -----------------------
+        
+    s    // let i =0;
+        // function print() {
+            
+            
+        //     if(i<5) {
+        //         console.log('Hello World');
+        //     i++;
+        //         print();
+        //     }
+        // }
+
+        // print();
+
+        // //Mutual recursive Function  - we are not using this function now a days.
+
+        // function a() {
+        //     console.log('fun a');
+        //     b();
+        // }
+
+        // function b(){
+        //     console.log('fun b');
+        //     a();
+        // }
+
+
+        //this keyword -> if the function presents inside an object then this keyword will refer to that object.
+
+        // const stu_name = {
+
+        //     name:'alex',
+        //     age: 26,
+        //     msg:function() {
+
+        //         console.log(`Your name is ${stu_name.name} and age ${stu_name.age}`);
+        //         console.log(`Your name is ${this.name} and age ${this.age}`);
+                
+        //     } 
+
+            // msg:()=>{               -> Arrow fucntion doesn't accept this keyword.
+
+            //     console.log(`Your name is ${stu_name.name} and age ${stu_name.age}`);
+            //     console.log(`Your name is ${this.name} and age ${this.age}`);
+
+            // }
+
+    //     }
+
+    // stu_name.msg();
+
+
+    // const emp_detail = {
+
+    //     name:'bavesh',
+    //     age:29,
+
+    //     info :function(){
+
+    //         console.log('This is a simple fn: ',this);
+
+
+    //         x=()=>{
+    //             console.log('This is an arrow fn: ',this);   //this keyword works in arrow function inside a simple fucntion.
+    //         }
+    //         x();
+    //     }
+    // }
+    // emp_detail.info();
+
+    // -------------------------------
+    
+    //if you're writing this keyword outside of a block or method , it will refer to the global object. window.
+
+    //if we use strict mode it is undefined.
+
+   
+    // function doc_date() {
+    //     console.log(this);
+    // }
+    // doc_date();
+
+
+    //Arrow function doesn't care care strict mode or floppy mode.
+    //Even though in strict mode it will refers to global object.
+
+    // const arrow = ()=>{
+
+    //     console.log(this)
+    // }
+    // arrow();
+
+    // const btn = document.querySelector('button')
+    // btn.addEventListener('click', function() {
+    //     console.log(this);                               //when using normal function it refers to elements.
+    // })
+
+    // const btn = document.querySelector('button')
+    // btn.addEventListener('click', ()=> {
+    //     console.log(this);                               //when using arrow function it refers to global object.
+    // })
+
+
+
+    //A shallow copy creates a new object and copies the properties of the original object into it. However, 
+    // it only copies references for nested objects instead of duplicating them.
+
+const school_data = {
+
+    name:'sskv',
+    year:2019,
+    section:['a','b','c'],
+    city:'chennai'
+
+}
+// const new_school_data = school_data  -> cloning
+
+// const new_school_data = Object.assign({},school_data);  -> shallow copy
+const new_school_data = {...school_data};     // Shaoow copy using spread operator.
+new_school_data.name = 'Ramakrishana Mission';
+new_school_data.year = 2021;
+new_school_data.city = 'bangalore'
+
+console.log(school_data);
+console.log(new_school_data);
+console.log(school_data.city);
+
+
+//shallow copy for Nested Object
+
+const school = {
+    name: "SSKV",
+    location: {
+        city: "Chennai",
+        state: "Tamil Nadu"
+    }
+};
+
+const shallowCopy = { ...school };
+
+shallowCopy.location.city = 'banagalore';
+
+console.log(school.location.city);
+
+
+//Deep Cloning Methods
+
+//Using JSON Methods
+
+const deepCopy = JSON.parse(JSON.stringify(school));
+
+deepCopy.location.city = "Mumbai";
+
+console.log(school.location.city); // ✅ "Chennai" (Unchanged)
+console.log(deepCopy.location.city); // "Mumbai"
+
+
+//Using Lodash  - we use in node js
+
+const _ = require("lodash");
+
+const deepCopy = _.cloneDeep(school);
+deepCopy.location.city = "Hyderabad";
+
+console.log(school.location.city); // ✅ "Chennai" (Unchanged)
+console.log(deepCopy.location.city); // "Hyderabad"
+
+
+    </script>
+</body>
+</html>

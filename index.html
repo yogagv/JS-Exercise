@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-DOM</title>
+</head>
+<body>
+    <h2 id="main-title">DOM interation</h2>
+    <ul>
+        <li class="list-item">List-1</li>
+        <li class="list-item">List-2</li>
+        <li class="list-item">List-3</li>
+    </ul>
+
+    <p id="demo"></p>    
+    <script>
+        //ById
+        document.getElementById("demo").innerHTML = "Hello World!";
+        
+        const mainTitle = document.getElementById('main-title');
+        console.log(mainTitle);
+        
+        //ByClass
+        const list_item = document.getElementsByClassName('list-item');
+        console.log(list_item);
+
+        //ByClassindex
+        const list_index = document.getElementsByClassName('list-item')[0];
+        console.log(list_index);
+
+        //TagName
+        const myTag = document.getElementsByTagName('h2');
+        console.log(myTag);
+
+        //querySelector - Select first element only with the same name
+        const querySelect = document.querySelector('ul li'); 
+        console.log(querySelect);
+
+        //querySelectAll - Select all the elements with the same name.
+        const querySelectAll = document.querySelectorAll('ul');
+        console.log(querySelectAll);
+
+        //querySelector - Select first element only with the same name
+        const querySelect_one = document.querySelector('#main-title');
+        console.log(querySelect_one);
+
+        const querySelect_two = document.querySelector('.list-item');
+        console.log(querySelect_two);
+
+        //querySelectorAll - Select all the elements with the same name. 
+        const querySelectAll_one = document.querySelectorAll('.list-item');
+        console.log(querySelectAll_one);
+
+        document.getElementById('main-title').style.backgroundColor = 'pink';
+        document.getElementById('main-title').style.border = '1px solid green';
+        document.getElementById('main-title').style.fontSize = '50px';
+
+        document.getElementsByClassName('list-item')[0].style.color = 'orange';
+
+        document.querySelector('ul li').style.border = '1px solid pink';
+
+        document.querySelectorAll('li')[2].style.border = '2px solid green'
+
+        // let x =123;
+        // let y = new Number(123);
+        // console.log(x===y);
+        // console.log(typeof y);
+
+
+
+        // const str = '$   123  ';
+        // const res = parseInt(str.replace('$', '').trim());
+        // console.log(res);
+
+        let arr = [1, 10, 40, 5, 50];
+        // let x = -1;
+        // for(let i=0; i<arr.length; i++){
+        //     if(x<arr[i]){
+        //         x = arr[i];
+        //     }
+        // }
+
+        // console.log(x);
+
+//other way
+        let z = Math.max(...arr)
+        console.log(z);
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in JavaScript</title>
+    <style>
+        section {
+            border: 1px solid black;
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+        button {
+            padding: 20px;
+            color: white;
+            border-radius: 5px;
+            background-color: hotpink;
+            border: none;
+            margin-left: 47%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+    <h2>Events in JavaScript</h2>
+    <!-- inline Js -->
+    <!-- <button onclick="alert('You clicked the Button!')">Click Me!</button>  -->
+    <!-- <button onclick="clickMe()">Click Me!</button> -->
+    <button id="myButton">Click Me!</button>
+    <!-- <button id="timer">Stop Timer!</button> -->
+</section>
+
+<section>
+    <button onclick="showNotification()">Submit</button>
+<div id="message" style="display: none; background: green; color: white; padding: 10px;">
+    Form submitted successfully!
+</div>
+<button id="cancelButton">Cancel</button>
+</section>
+<!-- <button id="cancelBtn">Cancel Button!</button> -->
+<!-- <button id="external">Clickme!</button> --> 
+<script src="Events.js"></script>
+<!-- <script>
+    function fun(){
+        alert('you cliked!')
+    }
+
+    const button = document.getElementById('external')
+    button.addEventListener('click', fun);
+
+</script> -->
+</body>
+</html>
+
+
+
+
+
+

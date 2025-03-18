@@ -1,0 +1,146 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #submit {
+        margin-top: 10px;
+    }
+    </style>
+</head>
+<body>
+    <h2 class="head-input"></h2>
+    <input type="text" id="name-input" placeholder="enter your name">
+
+    <form action="">
+        <label for="name">Name</label><br/>
+        <input type="text" id="name-input" name="name"><br/>
+        <label for="age">Age</label><br/>
+        <input type="text" id="age-input" name="age"><br/>
+        <input type="submit" value="Submit" id="submit">
+    </form>
+
+    <div id="form-table"></div>
+
+    <script>
+        const headInput = document.querySelector('.head-input');
+        const textInput = document.querySelector('#name-input');
+
+        textInput.addEventListener('input', (e)=>{
+
+            headInput.textContent = e.target.value;
+        });
+
+
+        // const submitValue = document.querySelector('#submit');
+        // const formTable = document.querySelector('#form-table')
+
+        // submitValue.addEventListener('click', (e)=>{
+
+        //     e.preventDefault();
+
+        //     const nameValue = document.querySelector('#name-input');
+        //     const ageValue = document.querySelector('#age-input');
+
+
+            
+        // })
+
+
+
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dynamic Table Example</h2>
+
+    <form id="dataForm">
+        <input type="text" id="name" placeholder="Enter Name" required>
+        <input type="email" id="email" placeholder="Enter Email" required>
+        <input type="number" id="age" placeholder="Enter Age" required>
+        <button type="submit">Add to Table</button>
+    </form>
+
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be added dynamically here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let age = document.getElementById('age').value;
+
+            // Create table row
+            let table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            let newRow = table.insertRow();
+
+            // Insert cells
+            let nameCell = newRow.insertCell(0);
+            let emailCell = newRow.insertCell(1);
+            let ageCell = newRow.insertCell(2);
+            let actionCell = newRow.insertCell(3);
+
+            // Assign values
+            nameCell.textContent = name;
+            emailCell.textContent = email;
+            ageCell.textContent = age;
+
+            // Add delete button
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() {
+                table.removeChild(newRow);
+            };
+            actionCell.appendChild(deleteButton);
+
+            // Clear form fields
+            document.getElementById('dataForm').reset();
+        });
+    </script>
+
+</body>
+</html>
