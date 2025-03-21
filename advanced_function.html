@@ -6,6 +6,8 @@
     <title>Advanced Functions(ES6)</title>
 </head>
 <body>
+    <button>Click Me</button>
+    <button>Callback</button>
     <script>
         /*
 
@@ -27,9 +29,11 @@
         }
         console.log(add());
 
-        //First class fucntion helps to create a higher order function
+
 
         //Higher Order Function - A function returns another function or a function takes another function as an arguments is called as Higher Order Function.
+
+         //First class fucntion helps to create a higher order function
 
         let x = 10;
 
@@ -53,6 +57,114 @@
 
         //or we can call like
         // fun()();
+
+        //////////////////////////
+
+       const btn = document.getElementsByTagName('button')[0]
+       btn.addEventListener('click', ()=>{
+        console.log('Clicked');
+       })
+
+
+       //Here, addEventListener method takes callback function as value.
+
+       //we're passing an arrow function as value to addEventListener method.
+
+       //addEventListener method is a higher order function because it takes another function as an argument.
+
+       ///////////////////////////////////
+
+       //Callback Function - Any Function which passess an argument to the function is called as Callback Function.
+
+       
+       const btn1 = document.getElementsByTagName('button')[1]
+       btn1.addEventListener('click', ()=>{
+        console.log('Clicked');
+       })
+
+       //here, a callback function(()=>{}) we are passing an argument to addEventListener Method.
+
+       //javascript is best = JAVASCRIPT is best
+
+
+
+       //here, firstWordUpper is a callback function.
+
+       //we are calling inside the textTrans function.
+
+
+       //textTrans is a Higher order Function because it takes another function(firstWordUpper) as an argument.
+       
+       function textTrans(str, fn) {
+
+            console.log(`input String: ${str}`);
+
+            console.log(`Converted String: ${fn(str)}`);
+       }
+
+       textTrans('javascript is best', firstWordWrapper)
+
+
+
+       //firstWordUpper is a callback Function.
+
+       function firstWordWrapper(str1) {
+        // console.log(str1)
+
+        // let word = str1.split(" ");    //instead of this
+        // console.log(word);
+
+        //instead of the above code for split we can destructuring and use rest operator. 
+
+        let [first, ...others] = str1.split(" ");
+        // console.log(first);
+
+        // return [first.toUpperCase(), ...others];                //it returns with comma coz this is array element. so we need to convert it.
+        return [first.toUpperCase(), ...others].join(' ');      //join is used to convert array to string. Wherever there is a space in array it will be converted to space in string using join(' ').
+}
+
+
+//////////////////////////////
+
+
+//IIFE - Immediately Invoked Fucntion Expression
+
+//IIFF is a Javascript Function that runs as soon as it is defined.
+
+//Normal way
+
+// function addition(a,b) {
+
+//     console.log(a+b);
+// }
+
+// addition(1,2)
+// addition(2,4)
+
+
+//IIFE way   - here we immediately call the function after defining it.
+
+(function addition(a,b) {
+
+console.log(a+b);
+})(1,2)
+
+
+//Function Currying  - it transforms a function of multiple arguments into several function of a single argument in sequence.
+
+//this entire function is a higher order function bcoz it returns a function.
+
+//parent function - x, inner fucntion - function(num2){}  
+    function fnCurrying(num1) {
+        return function(num2){
+            console.log(num1 + num2)
+        }
+    }
+
+    const add1 = fnCurrying(2)(3);  //here we are calling a inner function function(3) while calling a parent fucntion fnCurrying(2). so it is currying. x(2) is for num1 and x(3) is for num2
+
+   
+
     </script>
 </body>
 </html>

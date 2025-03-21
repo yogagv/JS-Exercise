@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Function 2</title>
+</head>
+<body>
+
+    <button id="submitBtn">Submit</button>
+    <button id="cancelBtn">Cancel</button>
+    
+    <script>
+
+        //call, apply, and bind method we can set 'this' keyword manually.
+
+
+        //Call Method:
+
+        // The call() method in JavaScript is used to invoke a function with a specified this value and arguments provided individually. 
+        // It is useful when you want to borrow methods from other objects or explicitly set the context (this) for a function.
+
+
+        //Normal way
+
+        // const apple = {
+            
+        //     brand: 'Toyato',
+        //     model: 'innova crysta',
+        //     price: '$28k',
+        //     info: function(mon, year) {
+        //             console.log(`${this.brand} released ${this.model} for the price of ${this.price} in ${mon} ${year}`);
+        //     }
+        // }
+
+        // apple.info('jan','2025')
+
+        const apple = {
+            
+            brand: 'Apple',
+            model: 'Iphone 16',
+            price: '$1.5k',
+            
+        }
+
+        const  samsung= {
+            
+            brand: 'Samsung',
+            model: 'S25 Ultra',
+            price: '$1.9k',
+            
+        }
+
+        //here we use info function globally so that we can call anywhere.
+
+        const info = function(mon, year) {
+                    console.log(`${this.brand} released ${this.model} for the price of ${this.price} in ${mon} ${year}`);
+            }
+
+
+        console.log('-----------------Call--------------------')
+
+        //call method expects two or more arguments. First argument is the object and the rest are the arguments of the function.
+
+        info.call(apple, 'sep','2024');
+        info.call(samsung, 'jan', '2025');
+
+
+        //here we can use spread operator also
+
+        //like 
+
+        const date = ['nov','2024']
+        const date_1 = ['jan','2025']
+        info.call(apple, ...date);
+        info.call(samsung, ...date_1);
+
+
+        ////////////////////////////
+
+        //Apply Method:
+
+        //The apply() method in JavaScript is used to invoke a function with a specified this value and arguments as an array. 
+        // It is similar to call(), but instead of passing arguments individually, you pass them as an array.
+
+
+        //Apply method expects exactly two arguments. The first argument is the context (this) and the second argument is an array of arguments
+
+        //except first argument remaining argument are array element.
+
+        console.log('-----------------Apply--------------------')
+
+        info.apply(apple,['sep','2024']);
+        info.apply(samsung,['jan','2025']);
+
+        info.apply(apple,date);
+        info.apply(samsung,date_1);
+
+    
+        let num = ['one','two']
+        let num_1 = ['three', 'four']
+
+        function a(val){
+            return val
+            
+        }
+        
+        // console.log(a(num));
+        console.log(a.apply(null, [num]));
+        console.log(a.apply(null, [num_1]));
+
+        /////////////////////////////////////
+
+        //Bind Method
+
+        //The bind() method in JavaScript is used to create a new function with a specified this value and, optionally, 
+        // pre-set arguments. Unlike call() and apply(), bind() does not immediately invoke the function—it returns 
+        // a new function that can be executed later.
+
+        console.log('------------Bind-----------------');
+
+        //Bind accepts only one variable
+
+        const appleInfo = info.bind(apple);
+        const samInfo = info.bind(samsung);
+        appleInfo('dec','2024');
+        samInfo('feb','2025');
+
+
+        //Closure - 
+       // A closure in JavaScript is a function that remembers the variables from its outer scope even after the outer function 
+       // has finished executing. This allows the inner function to retain access to variables from the outer function.
+
+        //Normal Function
+
+        function myFun() {
+            let count = 1
+            return count++
+        }
+        
+        console.log(myFun());
+        console.log(myFun());
+
+
+        //Closure way
+
+        function fun() {       //outer function
+
+            let count = 1;        //outer scope
+
+            return function(){      //inner function
+                count++;
+                console.log(count);   //Accessing count from outerFunction
+            }
+        }
+
+        let x = fun();   // x holds the inner function
+        x();
+        x();
+        x();
+
+        x = null   //when we gove x is null then only GEC(Global Execution Context) removed from Callstack.
+        // x();  ->  it throws an error
+
+        //When we call outerFunction(), it returns innerFunction.
+        //The returned function (innerFunction) is assigned to x.
+        //x now stores a reference to innerFunction, NOT the result of executing it.
+        //Since innerFunction references count, JavaScript keeps count in memory.
+
+
+        // Normally, when a function finishes, its variables are deleted.
+        // BUT! Since innerFunction still needs count, JavaScript keeps count in memory.
+        // This is called a closure: the inner function remembers and retains access to the outer function’s variables.
+
+
+        //Lexical Scoping - Lexical scoping (also called static scoping) means that a function's scope is determined by where it is defined in the source code, not where it is called.
+
+        // Functions can access variables defined in their parent scope.
+        // Parent functions CANNOT access variables inside their child functions.
+        // Functions retain access to their lexical scope even if they are executed outside of it (Closure).
+
+        // innerFunction is defined inside outerFunction, so it has access to outerVariable because of lexical scoping.
+        // Even though innerFunction is called inside outerFunction, it was defined inside outerFunction, so it retains access to its variables.
+
+//one more example for closure
+
+
+function setupButton(buttonId, message) {
+  const button = document.getElementById(buttonId);
+  button.addEventListener('click', function() {
+    // closure captures the 'message' parameter
+    console.log(message);
+    alert(message)
+  });
+}
+
+setupButton('submitBtn', 'Thanks for submitting!');
+setupButton('cancelBtn', 'Operation cancelled');
+
+
+
+//Normal way
+
+function outer(message) {
+    
+    function inner() {
+        console.log(message);
+    }
+
+    inner();
+}
+
+const closer = outer("Hello, World!");
+setTimeout(closer,3000)
+
+outer("Welcome!");
+
+
+//closure way
+
+function outerTime(msg) {
+    return function innerTime() {
+        console.log(msg)
+    }
+}
+
+const closeTime = outerTime('Hello');
+setTimeout(closeTime, 3000);
+
+
+
+
+
+
+
+//lexical scope example
+
+        function grandParent() {
+    let a = "Grandparent";
+    console.log(a)
+
+    function parent() {
+        let b = "Parent";
+        console.log(a);
+        console.log(b);
+
+        function child() {
+            let c = "Child";
+            console.log(a); 
+            console.log(b); 
+            console.log(c); 
+        }
+
+        child();
+    }
+
+    parent();
+}
+
+grandParent();
+
+
+    </script>
+</body>
+</html>
