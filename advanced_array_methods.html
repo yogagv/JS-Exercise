@@ -1,14 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Advanced Array Methods</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <script>
-        
+      //for of loop -> used to iterate over iterable objects such as arrays, strings, maps, sets, and more.
+      //It is used to iterate directly over values instead of indexes.
+
+      //Syntax:
+      // for(let variable_name of array_varible_name)
+
+      //Normal way
+
+      const colors = ["red", "blue", "green", "yellow"];
+      // It is used to iterate based on index
+      for (let i = 0; i < colors.length; i++) {
+        console.log(colors[i]);
+      }
+
+      //for of way
+
+      const colors2 = ["red", "blue", "green", "yellow"];
+      //It is used to iterate directly over values instead of indexes.
+      for (let color of colors2) {
+        console.log(color);
+      }
+
+      //entries method -> returns an array iterator that contains key-value pairs for each element in the array.
+
+      for (let color of colors2.entries()) {
+        console.log(color);
+      }
+
+      //extract value from array output in entries method
+
+      for (let [i, ele] of colors2.entries()) {
+        //->Here, we destructure the variable name from color to [i,ele] coz i represents index and ele represents element
+        console.log(i, ele);
+        console.log(i);
+        console.log(ele);
+      }
+
+      //for in loop ->iterate over object properties
+
+      //Syntax: for(let variable_name in object_name)
+
+      //keys are stored in string
+
+      const obj = {
+        a: 1,
+        b: 2,
+        c: 3,
+      };
+
+      for (let i in obj) {
+        console.log(i);
+
+        //if we want to get the value of the property or key we can go with obj[i](bracket notation) not dot notation.
+        //dot notation
+        console.log("------------Dot Notation--------");
+        console.log(obj.i);
+        //bracket notation
+        console.log("------------Bracket Notation---------");
+        console.log(obj[i]);
+      }
+
+      //Adavanced Array Methods:
+      //1)  forEach
+      //////////////////////
+      //2)  map()
+      //3)  filter()
+      //4)  reduce()
+      ///////////////////////
+      //5)  find()
+      //6)  findIndex()
+      //7)  some()
+      //8)  every()
+      //9)  flat()
+      //10) flatMap()
+      //11) sort()
+
+      //forEach(()=>{})        - we can call forEach as higher order function because it takes a callback function as an argument
+      // - .forEach() callback function can take up to three parameters, but only the first one is required.
+
+      const num = [2, 3, 5, 6, 1, 4, 7];
+
+      console.log("------Array forEach Method------");
+
+      const add = num.forEach((ele, i, array) => {
+        // ele - array element, i - index, array - entire array
+
+        console.log(ele, i, array, array.length);
+        //We can print either one of them or all of them.
+      });
+
+      
+
+    
+
+      
     </script>
-</body>
+  </body>
 </html>

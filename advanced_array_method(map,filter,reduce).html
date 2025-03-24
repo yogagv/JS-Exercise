@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array - Map, Filter, Reduce</title>
+  </head>
+  <body>
+    <script>
+      //Adavanced Array Methods:
+      //1)  forEach
+      //////////////////////
+      //2)  map()
+      //3)  filter()
+      //4)  reduce()
+      ///////////////////////
+      //5)  find()
+      //6)  findIndex()
+      //7)  some()
+      //8)  every()
+      //9)  flat()
+      //10) flatMap()
+      //11) sort()
+
+      const num = [2, 3, 5, 6, 1, 4, 7];
+
+      //map(()=>) - Creates a new array by applying a function to each element.
+      //map methods expects array as an input and ouput also an array.
+
+      //   const mapRes = num.map((ele) => {
+      //     return ele * 2;
+      //   });
+
+      //   console.log(mapRes);
+
+      //(or) we can write like this
+
+      const mapRes = num.map((ele) => ele * 2);
+      console.log(mapRes);
+
+      //filter() - Creates a new array with elements that satisfy a condition.
+      //filter expects array as an input and output also an array.
+
+      //   const filterRes = num.filter((ele) => {
+      //         return ele >= 4
+      //   })
+
+      //   console.log(filterRes);
+
+      //(or) we can write like this
+      const filterRes = num.filter((ele) => ele >= 4);
+      console.log(filterRes);
+
+      const smartPhone = [
+        {
+          brand: "Samsung",
+          model: "Galaxy S23 Ultra",
+          price: 1199.99,
+          ram: "12GB",
+          storage: "256GB",
+        },
+        {
+          brand: "Apple",
+          model: "iPhone 15 Pro Max",
+          price: 1299.99,
+          ram: "8GB",
+          storage: "512GB",
+        },
+        {
+          brand: "Google",
+          model: "Pixel 8 Pro",
+          price: 999.99,
+          ram: "12GB",
+          storage: "256GB",
+        },
+        {
+          brand: "OnePlus",
+          model: "OnePlus 12",
+          price: 899.99,
+          ram: "16GB",
+          storage: "512GB",
+        },
+        {
+          brand: "Xiaomi",
+          model: "Xiaomi 13 Pro",
+          price: 899.99,
+          ram: "12GB",
+          storage: "512GB",
+        },
+      ];
+
+      const phone = smartPhone.filter((ele) => ele.ram === "12GB");
+      console.log(phone);
+
+      //reduce() - Reduces an array to a single value   /expects two parameter , first one is callback function and second one is accumulate value.
+      //reduce expects array as an input and output can be any, like number, string, array, object etc.
+
+      const reduceRes = num.reduce((acc, ele) => {
+        // 1st parameter - callback fucntion ()=>{}, second parameter accumulated value(0) - default value is 0
+        // here callback takes two paramter, first one is accumulator and second one is element
+        return acc + ele;
+      }, 0);
+
+      console.log(reduceRes);
+
+      //(or) we can write like this
+
+      const reduRes = num.reduce((acc, ele) => acc + ele, 0);
+      console.log(reduRes);
+
+      //accumulation in array
+
+      const reduceRes1 = num.reduce((acc, ele) => {
+        if (ele > 3) {
+          acc.push(ele);
+        }
+        return acc;
+      }, []);
+      console.log(reduceRes1);
+
+      //(or) we can write like this
+      const reduceRes2 = num.reduce((acc, ele) => (ele > 3 ? acc.push(ele) : null, acc),[]);
+      console.log(reduceRes2);
+
+      //(or) we can write like this (logical (&&) and ,) to avoid null
+      const reduceRes3 = num.reduce((acc, ele) => (ele > 3 && acc.push(ele), acc),[]);
+      console.log(reduceRes3);
+    </script>
+  </body>
+</html>

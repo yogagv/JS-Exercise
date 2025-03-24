@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = [1, 2, 3, 1, 5, 8, 2, 5];
+      const distinct = [...new Set(arr)];
+      console.log(distinct);
+
+      //using Filter method
+
+      const unique = arr.filter((item, index) => arr.indexOf(item) === index);
+      console.log(unique);
+
+      //using classic way
+
+      function removeDuplicates(arr) {
+        let result = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (!result.includes(arr[i])) {
+            result.push(arr[i]);
+          }
+        }
+        return result;
+      }
+      console.log(removeDuplicates(arr));
+
+      //forEach - for big array
+
+      function removeDuplicatesBig(arr) {
+        const result = [];
+        const seen = {};
+
+        arr.forEach((num) => {
+          if (!seen[num]) {
+            result.push(num);
+            seen[num] = true;
+          }
+        });
+
+        return result;
+      }
+
+      console.log(removeDuplicatesBig(arr));
+
+      //Fast checks: Checking seen[num] is O(1) (constant time) because object property lookups are fast.
+
+      //Efficient memory usage: Objects only store unique keys.
+
+      //Easy to implement: seen[num] = true; marks a number as seen.
+
+      //here we use {} instead of includes
+
+
+      console.log(arr.indexOf(1));
+      console.log(arr.indexOf(2));
+      console.log(arr.indexOf(3));
+      console.log(arr.indexOf(1));
+      console.log(arr.indexOf(5));
+      console.log(arr.indexOf(8));
+      console.log(arr.indexOf(2));
+      console.log(arr.indexOf(5));
+
+      
+    </script>
+  </body>
+</html>

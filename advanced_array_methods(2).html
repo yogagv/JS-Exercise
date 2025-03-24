@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Array methods</title>
+  </head>
+  <body>
+    <script>
+      //Adavanced Array Methods:
+      //1)  forEach
+      //////////////////////
+      //2)  map()
+      //3)  filter()
+      //4)  reduce()
+      ///////////////////////
+      //5)  find()
+      //6)  findIndex()
+      //7)  some()
+      //8)  every()
+      //9)  flat()
+      //10) flatMap()
+      //11) sort()
+
+      //find() - Returns the first element that matches a condition.
+      const num = [1, 4, 2, 3, 6];
+
+      const findRes = num.find((ele) => ele > 4);
+      //here ele > 4 is condition as we know find () returns first element that matches the condition so it will return 6. 6 > 4, 5 > 4, 7 > 4
+      //so it returns first true element(6). 6 > 4.
+      console.log(findRes);
+
+      //findIndex() - Returns the index of the first matching element.
+      const findIndexRes = num.findIndex((ele) => ele > 4);
+      console.log(findIndexRes);
+
+      //some() - Checks if at least one element meets a condition. Returns true if at least one element meets the condition, false otherwise.
+      //doesn't check whether the compared value is prsent in array or not
+      const someRes = num.some(ele => ele > 5)  //5 is not present
+      const someRes1 = num.some(ele => ele > 7) //7 is not present
+      const someRes2 = num.some(ele => ele > 3) //3 is present
+      console.log(someRes);
+      console.log(someRes1);
+      console.log(someRes2);
+
+      //every() - Checks if all elements meet a condition.
+      //doesn't check whether the compared value is prsent in array or not
+      const everyRes = num.every((ele)=>{
+        return ele > 3
+      })
+      console.log(everyRes);
+
+      const everyRes1 = num.every(ele => ele > 1)
+      console.log(everyRes1);
+
+      const everyRes2 = num.every(ele => ele >= 1)
+      console.log(everyRes2);
+
+      const everyRes3 = num.every(ele => ele < 7) //7 is not present
+      console.log(everyRes3);
+
+      //flat() - Flattens a nested array to a given depth.
+      const num1 = [[1, 4], [2, 3, 6], [5]];
+      //here, we are having only one nested array, we can use flat() or flat(1)
+      const flatRes = num1.flat();
+      console.log(flatRes);
+
+      //if we are having nested array(2), we can use flat(2)
+      const num2 = [[1, 4], [2, [3, 6], 8], [5]];
+      const flatRes1 = num2.flat(2);
+      console.log(flatRes1);
+
+      //if we are having nested array(2), we can use flat(2)
+      const num3 = [[1, 4], [2, 3, 6, [8, [9, 7]]], [5]];   // flat(3) - [2, 3, 6, [8, [9, 7] ]]
+      const flatRes2 = num3.flat(3);
+      console.log(flatRes2);
+
+      //flatMap() - Maps each element and then flattens the result. introduced in 2020
+      const students = [
+        {name:'peter', number:[1, 2, 3]}, 
+        {name:'jessica', number:[4, 5, 6]}, 
+        {name:'david', number:[7, 8, 9]}
+    ]
+
+     const studentsRes = students.flatMap(ele => ele.number)
+     console.log(studentsRes);
+    //(or) using method chaining  
+    //before 2020
+    const stuRes = students.map(ele => ele.number).flat()
+    //this is also method chaining coz here we use, map(), flat(), reduce() methods.
+    //const stuRes = students.map(ele => ele.number).flat().reduce((ele, acc)=> acc + ele, 0) //we can add reduce here also
+    console.log(stuRes);
+
+    //totalvalues
+    const totalvalues = stuRes.reduce((ele, acc)=> acc + ele, 0)
+    console.log(totalvalues);
+
+    //sort() - sorts the elements of an array in place and returns the array.
+    //in sort() method it will affect original array (Mutates It)
+    //here we can store sort in a variable. however it mutates the original array. that's why we no need to store in a variable like other methods.
+
+    const fruits = ['apple', 'pomegranate', 'ornage', 'mango']
+    console.log(fruits.sort())
+    console.log(fruits);
+
+    const fruits1= ['apple', 'Pomegranate', 'Ornage', 'mango']  //based on ASCII table it is gonna arrange.
+    console.log(fruits1.sort());
+    
+    
+
+    </script>
+  </body>
+</html>
