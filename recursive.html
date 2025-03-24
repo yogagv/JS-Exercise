@@ -51,7 +51,7 @@
 
 // -----------------------
         
-    s    // let i =0;
+        // let i =0;
         // function print() {
             
             
@@ -167,16 +167,17 @@ const school_data = {
     city:'chennai'
 
 }
+
 // const new_school_data = school_data  -> cloning
 
 // const new_school_data = Object.assign({},school_data);  -> shallow copy
-const new_school_data = {...school_data};     // Shaoow copy using spread operator.
+const new_school_data = {...school_data};     // Shallow copy using spread operator.
 new_school_data.name = 'Ramakrishana Mission';
 new_school_data.year = 2021;
 new_school_data.city = 'bangalore'
 
 console.log(school_data);
-console.log(new_school_data);
+console.log(new_school_data); 
 console.log(school_data.city);
 
 
@@ -194,7 +195,11 @@ const shallowCopy = { ...school };
 
 shallowCopy.location.city = 'banagalore';
 
+console.log(school);
+console.log(shallowCopy);
+
 console.log(school.location.city);
+
 
 
 //Deep Cloning Methods
@@ -211,13 +216,14 @@ console.log(deepCopy.location.city); // "Mumbai"
 
 //Using Lodash  - we use in node js
 
-const _ = require("lodash");
+// const _ = require("lodash");
 
-const deepCopy = _.cloneDeep(school);
-deepCopy.location.city = "Hyderabad";
 
-console.log(school.location.city); // ✅ "Chennai" (Unchanged)
-console.log(deepCopy.location.city); // "Hyderabad"
+// const deepCopy = _.cloneDeep(school);
+// deepCopy.location.city = "Hyderabad";
+
+// console.log(school.location.city); // ✅ "Chennai" (Unchanged)
+// console.log(deepCopy.location.city); // "Hyderabad"
 
     </script>
 </body>
