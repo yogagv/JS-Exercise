@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP in JS</title>
+</head>
+<body>
+    <script>
+        //OOP - Object Oriented Programming
+        //whenever we are creating objects, array or function, the prototype will be attached to it.
+
+        /* 
+        
+        Object-Oriented Programming (OOP) in JavaScript is a programming paradigm that allows you to structure your code 
+        using objects and classes. JavaScript supports OOP through prototypes and ES6 classes.
+
+        */
+
+        /*      Key OOP Concepts in JavaScript
+        
+                Classes and Objects
+
+                Abstraction  - (Hiding or ignoring something) Abstraction means hiding implementation details and exposing only necessary parts.
+
+                Encapsulation - Making Properties and mehtods Private inside the Class.
+
+                Inheritance - Making properties and methods of one class(Parent) available to another class(Child).
+
+                Polymorphism - a Child class on methods are overwritten.    
+                
+                3 ways to work with OOP
+                ------------------------
+
+                1) Constructor way (new keyword), Literal way (without constructor) though without constructor, it will be created with default constructor.
+                2) Class way (ES6 classes) - This is the most modern way of creating classes in JavaScript
+                3) Object.create()
+                
+                */
+
+        const arr = [1, 2, 3];
+        console.log(typeof arr);
+        console.log(arr);  //we can see prototype in output.
+
+
+        //Class - Classes are blueprints for creating objects. JavaScript introduced classes in ES6.
+
+        /* Syntax  - this is blueprint.
+
+            class ClassName {
+                constructor(parameters) {
+                  // Initialize properties
+            }
+        methodName() {
+            // Method logic
+            }
+        }
+
+        then we can use the class for object
+        
+        */
+
+
+         //Basic Function
+
+         const Person = function(name, year){
+            this.firstname = name;
+            this.birthyear = year;
+        }
+        const yoga = new Person('yoga', 1996);
+        const alex = new Person('alex', 1990);
+        console.log(yoga);
+        console.log(alex);
+
+        Person.prototype.calcAge = function(){
+            console.log(2024 - this.birthyear);
+        }
+
+        yoga.calcAge();
+        alex.calcAge();
+    
+
+        //with constructor, if we dont' create a class with constructor , it will be created with default constructor by javascript.
+
+        class User {
+
+                constructor(username, password){
+                this.username = username;
+                this.password = password;
+            }
+
+            //when we use(arrow or normal function) log : ()=>{}, JavaScript creates a new greet function for each instance.
+            //person1 and person2 do not share the same function. that's why we go with log(){}
+            
+            // JavaScript creates log once and stores it in User.prototype.
+             //Every instance (e.g., person_1, person_2) shares the same function.
+            log(){
+                //login logic
+                console.log(`your username is ${this.username} nd password is ${this.password}`);
+            }
+        }
+
+        const person_1 = new User('mayuras', 'mayuras@123');
+        person_1.log();  
+        const person_2 = new User('vednesh', 'ved@123');
+        person_2.log();
+        const person_3 = new User('skilldev', 'skilldeo@123'); 
+        person_3.log();
+
+        console.log(person_1 === person_2);
+
+        // 'new' keyword in javaScript automatically creates a new object.
+        // inside a class constructor, 'this' refers to the new object being created., If we don't use new, this would refer to undefined
+        // If new is used, JavaScript automatically returns the newly created object.
+
+
+        //based on that User class we are gonna create one object
+        //in, person_1,2,3 object we can see all the methods and properties of User class this is called instantiation.
+        //Instantiation in JavaScript refers to the creation of a new object (an instance) from a class or constructor function. 
+        //It's the process of bringing a blueprint (the class or constructor) to life, resulting in a concrete object with its own properties and methods.
+                          
+        
+
+    </script>
+</body>
+</html>

@@ -43,13 +43,18 @@
         darkBtn.addEventListener('click', ()=>{
             dark.classList.toggle('dark-mode')
 
-            if (dark.classList.contains('dark-mode')) {
-                darkBtn.textContent = 'Disable Dark Mode';
-                modeText.textContent = 'This is Dark Mode';
-            } else {
-                darkBtn.textContent = 'Enable Dark Mode';
-                modeText.textContent = 'This is Light Mode';
-            }
+            // if (dark.classList.contains('dark-mode')) {
+            //     darkBtn.textContent = 'Disable Dark Mode';
+            //     modeText.textContent = 'This is Dark Mode';
+            // } else {
+            //     darkBtn.textContent = 'Enable Dark Mode';
+            //     modeText.textContent = 'This is Light Mode';
+            // }
+
+            dark.classList.contains('dark-mode') 
+    ? (darkBtn.textContent = 'Disable Dark Mode', modeText.textContent = 'This is Dark Mode')
+    : (darkBtn.textContent = 'Enable Dark Mode', modeText.textContent = 'This is Light Mode')
+    
         });
     </script>
 </body>

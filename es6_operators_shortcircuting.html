@@ -42,12 +42,11 @@
         let canVote = age >= 18 ? `Yes, you can vote! coz you are ${age}` : `No, you cannot vote. coz you are under ${age}`;
         console.log(canVote);
 
-
-
-
         const car = {
+
             brand: 'Toyota',
             kms: 0
+
         }
 
         const distance = car.kms ? car.kms: '10';           //ternary operator
@@ -130,9 +129,9 @@
          console.log(restaurant.openingTime.tues);
 
          //use optional chaining
-        //  console.log(restaurant.openingTime.mon.open);
+         //console.log(restaurant.openingTime.mon.open);
          console.log(restaurant.openingTime.mon?.open);
-
+          
          
     </script>
 </body>

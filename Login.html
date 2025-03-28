@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        h2 {
+            text-align: center;
+            color: blue;
+        }
+
+        input {
+            margin-left: 50%;
+            transform: translateX(-50%);
+            margin-top: 10px;
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid black;    
+        }
+
+        button {
+
+            margin-left: 50%;
+            transform: translateX(-50%);
+            margin-top:5px;
+            border: none;
+            background-color: bisque;
+            cursor: pointer;
+            color: black;
+            padding: 15px;
+            width: max-content;
+            border-radius: 5px;
+        }
+        #result {
+
+            text-align: center;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<br>
+    <h2>Login</h2>
+    <input type="text" placeholder="Enter your username" id="username"></br/>
+    <input type="password" placeholder="Enter your password" id="password"></br/>
+    <button onclick="login()">Login</button>
+    <p id="result"></p>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const result = document.getElementById('result');
+
+            document.getElementById('result').innerHTML = 'Loading...';
+            if (username === 'admin' && password === 'admin') {
+                setTimeout(() => {
+                    document.getElementById('result').innerText = 'Login Successful!';
+                    result.style.color = 'green';
+                }, 2000);
+
+            } else {
+                setTimeout(() => {
+                    document.getElementById('result').innerText = 'Login Failed!';
+                    result.style.color = 'red';
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>

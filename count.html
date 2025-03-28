@@ -14,33 +14,62 @@
     </style>
 </head>
 <body>
+    <!-------------->
     <div>
-        <button id="count-btn">Count</button>
+        <button id="count-btn">Count Increment</button>
+        <button id="count-dec">Count Decrement</button>
+        <button id="count-reset">Count Reset</button>
         <h3 id="count-value">0</h3>
         <h2 id="input-value"></h2>
         <input type="text" placeholder="Enter your name" id="name-input">
     </div>
     <script>
+
         const countbtn = document.getElementById('count-btn');
+        const countdce = document.getElementById('count-dec');
+        const countreset = document.getElementById('count-reset');
         const countValue = document.getElementById('count-value');
+
         let count = 0;
 
-        countbtn.addEventListener('click', ()=>{
+        function updateCount() {
+              
+              countValue.textContent = count; 
+        }
 
-            
+        updateCount();
+
+        countbtn.addEventListener('click', ()=>{
             count++;
             countValue.textContent = count;
-        })
+            updateCount();
+        });
 
+        countdce.addEventListener('click', ()=>{
+            count > 0 ? count-- : count = 0; 
+            countValue.textContent = count;
+            updateCount();
+        });
+
+        countreset.addEventListener('click', ()=>{
+            count = 0;
+            countValue.textContent = count;
+            updateCount();
+        });
+
+        
         const nameInput = document.querySelector('#name-input');
         const inputValue = document.querySelector('#input-value');
 
         nameInput.addEventListener('input', (e)=>{
             inputValue.textContent = 'Welcome ' + e.target.value + ' to our Academy!';
-        })
+        });
 
 
+        const nameVal = 'apple, orange, banana'
+        console.log(nameVal.split(" ")[1]);  
         
+
     </script>
 </body>
 </html>

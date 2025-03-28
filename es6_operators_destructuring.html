@@ -186,6 +186,8 @@
         const [a1,a2,a3,...rest] = cities;          //here we can name any not only rest.
         console.log(rest);   // it creates an array
         console.log(a1,a2,a3);
+        console.log(typeof(a1,a2,a3));
+        
 
         const [...others] = cities;
         console.log(others);
@@ -228,6 +230,15 @@ function add(...numbers){                  // for parameter rest pattern & for a
 
 }
 add(...num)            //when we use spread operator in argument it is not working and it takes only one value like 2,3,4,5 so we need to add rest pattern to parameter as well
+
+//Object rest
+const user_1 = { u_name: "Alex", u_age: 25, u_country: "India", u_profession: "Developer" };
+
+const { user_name, user_age, ...user_other } = user_1;
+
+console.log(user_name);   // "Alex"
+console.log(user_age);    // 25
+console.log(user_other);   // { country: "India", profession: "Developer" }
 
     </script>
 </body>
