@@ -166,23 +166,38 @@
     function first_stu(){
 
         let age =25;
+        var roll_no = 10;
 
         if( age >= 20 ) {
 
             const decade = 20;
             var elder = true;
+
+            console.log(decade);
+            
         }
 
         function second_stu(){
 
             const job = 'Engineering';
             console.log(`${name} is ${age} years old and focus on ${job}`);
+            console.log(elder);
+            // console.log(decade);                 // throws an error snice const is a block scope variable.
+            
         }
 
         second_stu();
+
+        console.log(age);
+        console.log(elder);
+        
     }
 
     first_stu();
+
+    console.log(stu_name);
+
+    
 
     </script>
 </body>

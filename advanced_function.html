@@ -23,11 +23,38 @@
 
         //  First Class Function
 
-        let add = function() {           // add -variable, function(){} - value
+        let add = function(a, b) {           // add -variable, function(){} - value
 
-            return 3 + 4
+            return a + b
         }
-        console.log(add());
+        console.log(add(3,4));
+
+
+        let mul = function(a,b) {
+            return a * b
+        }
+
+        let resultValue = add(mul(3,4),5);
+        console.log();
+        
+////////////////////////////////////////////////
+console.log('----------using return keyword----------');
+
+        function addition(a,b) {
+
+            console.log(a+b);
+            // return a + b
+        }
+
+
+        function multiply(a,b) {
+            
+            return a * b
+        }
+
+        let retValue = addition(multiply(2,3),5);
+        console.log(retValue);
+        
 
 
 
@@ -42,7 +69,7 @@
             console.log(a)
         }
         print(add);   // here print function receives another function(add) as an argument that's why we called it as Higher Order Function.
-        print(add()); // -> it returns value 7
+        print(add(4,9)); // -> it returns value 7
 
 /////////////////////////////////////////////////////
 

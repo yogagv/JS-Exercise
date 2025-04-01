@@ -64,29 +64,35 @@
          //Basic Function
 
          const Person = function(name, year){
-            this.firstname = name;
-            this.birthyear = year;
+            this.firstname = name;                           //this.firstname = name is a property.
+            this.birthyear = year;                           //this.birthyear = year is a property.
         }
-        const yoga = new Person('yoga', 1996);
+        const yoga = new Person('yoga', 1996);               //object is nothing but instances of class. here const yoga is a instance.
         const alex = new Person('alex', 1990);
         console.log(yoga);
         console.log(alex);
 
-        Person.prototype.calcAge = function(){
+        Person.prototype.calcAge = function(){              //method
             console.log(2024 - this.birthyear);
+        }
+
+        Person.prototype.show = function() {
+
+            console.log(`your first name is ${this.firstname}`);
         }
 
         yoga.calcAge();
         alex.calcAge();
     
+        yoga.show();
 
         //with constructor, if we dont' create a class with constructor , it will be created with default constructor by javascript.
 
         class User {
 
-                constructor(username, password){
-                this.username = username;
-                this.password = password;
+                constructor(username, password){                 //constructor - methos
+                this.username = username;                        //this.username = username is a property
+                this.password = password;                        //this.password = password is a property
             }
 
             //when we use(arrow or normal function) log : ()=>{}, JavaScript creates a new greet function for each instance.
@@ -94,14 +100,15 @@
             
             // JavaScript creates log once and stores it in User.prototype.
              //Every instance (e.g., person_1, person_2) shares the same function.
-            log(){
+            log(){                                                                  // log is a method
                 //login logic
                 console.log(`your username is ${this.username} nd password is ${this.password}`);
             }
         }
 
-        const person_1 = new User('mayuras', 'mayuras@123');
+        const person_1 = new User('mayuras', 'mayuras@123');    //object is nothing but instances of class. here const person_1 is a instance.
         person_1.log();  
+        console.log(person_1);
         const person_2 = new User('vednesh', 'ved@123');
         person_2.log();
         const person_3 = new User('skilldev', 'skilldeo@123'); 
@@ -119,7 +126,188 @@
         //Instantiation in JavaScript refers to the creation of a new object (an instance) from a class or constructor function. 
         //It's the process of bringing a blueprint (the class or constructor) to life, resulting in a concrete object with its own properties and methods.
                           
-        
+
+
+        //Abstraction (Hiding implementation details)
+
+        //Only the necessary details are exposed, while internal logic remains hidden.
+
+        // Users don’t need to know how the login works; they just call log().
+
+        // Example: The user doesn’t need to know how passwords are stored or verified internally.
+
+
+        //inheritance (one class(subclass) can inherit properties and methods of another class(super class))
+
+        //Inheritance in JavaScript is implemented using the prototype chain. A subclass inherits properties and methods from its superclass through the prototype chain.
+
+        class Employee {
+
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            data() {
+
+                //If you want to use a superclass method inside a subclass method, the superclass method must return a value instead of just logging it.
+                return `Employee name is ${this.name} and age is ${this.age}`;
+                
+            }
+        }
+
+        const emp = new Employee('Yoga', 28);
+        console.log(emp);
+        emp.data();
+
+        class EmployeeRole extends Employee {
+            
+            constructor(name, age, role) {
+
+                //inherit name and age is from Employee class
+
+                super(name, age)   //super keyword is used to inherit properties and methods from parent class
+                this.role = role;
+            }
+
+              emprole() {
+
+                console.log(`Employee role is ${this.role}`);
+              }
+
+              empdata() {
+
+                 return `${super.data()} and role is ${this.role}`;
+              }
+        }
+
+        const empData = new EmployeeRole('Alex', 40, 'HR');
+        console.log(empData.empdata());
+        empData.emprole();
+        console.log(empData);
+
+        // Encapsulation(Restricting Access to Data) - It refers to hiding the internal details of an object and only exposing    necessary parts. 
+        //making properties private so they are not directly accessed or modified.
+        //Prevents accidental modification of sensitive data.
+
+        class Admin {
+
+            #password //Private property
+
+            constructor(username) {
+
+            }
+        }
+
+
+        //Without Encapsulation
+
+        class Admin_1 {
+            constructor(username, password) {
+                this.username = username;
+                this.password = this.hashPassword(password); //  Public property
+        }
+
+        hashPassword(password) { // Public method
+            return `hashed_${password}`;
+        }
+
+        log() {
+        console.log(`Your username is ${this.username} and password is ${this.password}`);
+        }
+    }
+
+    const user_1 = new Admin_1('mayuras', 'mypassword123');
+    user_1.log();  
+
+    console.log(user_1.password);  //Hashed password (Anyone can access it!)
+    console.log(user_1.hashPassword("hacked_password"));  //"hashed_hacked_password" (Anyone can call this method!)
+
+    //password can be changed
+    user_1.password = "hacked_password"; 
+    console.log(user_1.password); //    (Security risk!)
+
+    //hashed password can be manipulated
+    console.log(user_1.hashPassword("newpassword"));
+
+
+    //Encaptulation with realtime example (ATM System)
+
+    class ATM {
+    #pin; // 🔒 Private property
+    #balance;
+
+    constructor(pin, balance) {
+        this.#pin = pin;
+        this.#balance = balance;
+    }
+
+    authenticate(inputPin) {
+        return inputPin === this.#pin;
+    }
+
+    checkBalance(inputPin) {
+
+        if (this.authenticate(inputPin)) {
+            return `Your balance is $${this.#balance}`;
+        } else {
+            return "Incorrect PIN!";
+        }
+    }
+
+    withdraw(inputPin, amount) {
+        if (!this.authenticate(inputPin)) 
+        return "Incorrect PIN!";
+        if (amount > 0 && amount <= this.#balance) {
+            this.#balance -= amount;
+            return `Withdrawal successful! New balance: $${this.#balance}`;
+        } else {
+            return "Invalid withdrawal amount.";
+        }
+    }
+}
+
+const myATM = new ATM("1234", 5000);
+
+console.log(myATM.checkBalance("1234")); //  "Your balance is $5000"
+console.log(myATM.withdraw("1234", 1000)); //  "Withdrawal successful! New balance: $4000"
+console.log(myATM.checkBalance("0000")); //  "Incorrect PIN!"
+// console.log(myATM.#balance); //  Error (Private property)
+
+//Ploymorphism(Method Overriding in Child Class)
+
+//A child class can override a method from the parent class and provide a different implementation.
+
+class User_2 {
+
+    constructor(username, password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    log() {
+        console.log(`User: ${this.username} and Password ${this.password}`);
+    }
+}
+
+class Admin_2 extends User {
+    constructor(username, password, role) {
+        super(username, password);
+        this.role = role;
+    }
+
+    // Overriding log() method
+    log() {
+        console.log(`Admin: ${this.username} with role ${this.role} and Password ${this.password}`);
+    }
+}
+
+const user1 = new User_2('mayuras', 'mypassword123');
+const admin1 = new Admin_2('adminUser', 'admin123', 'SuperAdmin');
+
+user1.log(); 
+admin1.log();
+
 
     </script>
 </body>

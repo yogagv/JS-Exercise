@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise_1</title>
+    <button>Navpromise</button>
+    <button>Click me</button>
+</head>
+<body>
+    
+    <script>
+        console.log('--------Nav Promise--------');
+       
+       function getCurrentPosition() {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+}
+
+function trackHandler_one() {
+    getCurrentPosition()
+        .then((ress) => {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log(ress);
+                    resolve();
+                }, 3000);
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    
+    console.log('Timer Done..!');
+}
+
+const navBtnn = document.getElementsByTagName('button')[0];
+navBtnn.addEventListener('click', trackHandler_one);
+
+
+
+//previous example from promises.html file
+
+
+//promise for geolocation
+const getPosition = function() {
+    return new Promise((resolve, reject)=>{
+        navigator.geolocation.getCurrentPosition(
+            (postData)=>{
+                resolve(postData);
+        }, (err) => {
+            reject(err);
+        })
+    })
+}
+
+//promise for timer
+const setTimer = function(duration) {
+
+const myPromise = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve('Timer Done!')
+    }, duration)
+})
+return myPromise;
+}
+
+
+function locationHandler() {
+
+    let positionData;
+    getPosition().then((postData)=>{   // First .then() - Handles geolocation success
+        positionData = postData;
+       return setTimer(3000);
+    }).then((timerData)=>{            // Second .then() - Executes after 3 seconds
+        console.log(timerData, positionData);
+    })
+
+    console.log('Synchronous code');
+    
+}
+
+
+const navbtn = document.getElementsByTagName('button')[1];
+navbtn.addEventListener('click', locationHandler)
+    </script>
+</body>
+</html>

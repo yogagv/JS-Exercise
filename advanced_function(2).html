@@ -175,65 +175,7 @@
 
         //Lexical Scoping - Lexical scoping (also called static scoping) means that a function's scope is determined by where it is defined in the source code, not where it is called.
 
-        // Functions can access variables defined in their parent scope.
-        // Parent functions CANNOT access variables inside their child functions.
-        // Functions retain access to their lexical scope even if they are executed outside of it (Closure).
-
-        // innerFunction is defined inside outerFunction, so it has access to outerVariable because of lexical scoping.
-        // Even though innerFunction is called inside outerFunction, it was defined inside outerFunction, so it retains access to its variables.
-
-//one more example for closure
-
-
-function setupButton(buttonId, message) {
-  const button = document.getElementById(buttonId);
-  button.addEventListener('click', function() {
-    // closure captures the 'message' parameter
-    console.log(message);
-    alert(message)
-  });
-}
-
-setupButton('submitBtn', 'Thanks for submitting!');
-setupButton('cancelBtn', 'Operation cancelled');
-
-
-
-//Normal way
-
-function outer(message) {
-    
-    function inner() {
-        console.log(message);
-    }
-
-    inner();
-}
-
-const closer = outer("Hello, World!");
-setTimeout(closer,3000)
-
-outer("Welcome!");
-
-
-//closure way
-
-function outerTime(msg) {
-    return function innerTime() {
-        console.log(msg)
-    }
-}
-
-const closeTime = outerTime('Hello');
-setTimeout(closeTime, 3000);
-
-
-
-
-
-
-
-//lexical scope example
+        //lexical scope example 
 
         function grandParent() {
     let a = "Grandparent";
@@ -259,6 +201,96 @@ setTimeout(closeTime, 3000);
 
 grandParent();
 
+
+
+        // Functions can access variables defined in their parent scope.
+        // Parent functions CANNOT access variables inside their child functions.
+        // Functions retain access to their lexical scope even if they are executed outside of it (Closure).
+
+        // innerFunction is defined inside outerFunction, so it has access to outerVariable because of lexical scoping.
+        // Even though innerFunction is called inside outerFunction, it was defined inside outerFunction, so it retains access to its variables.
+
+//one more example for closure
+
+
+function setupButton(buttonId, message) {
+  const button = document.getElementById(buttonId);
+  button.addEventListener('click', function() {
+    // closure captures the 'message' parameter
+    console.log(message);
+    alert(message)
+  });
+}
+
+setupButton('submitBtn', 'Thanks for submitting!');
+setupButton('cancelBtn', 'Operation cancelled');
+
+
+// another example of closure
+
+function outerParent() {
+    let name = 'Javascript'
+    function innerChild() {
+        return `your course name is ${name}`
+    }
+    return innerChild;
+}
+
+const resOpt = outerParent();
+console.log('Type of result :', typeof resOpt);
+console.log(resOpt());
+
+
+
+
+
+//Normal way
+
+function outer(message) {
+    
+    function inner() {
+        console.log(message);
+    }
+
+    inner();
+}
+
+const closer = outer("Hello, World!");
+setTimeout(closer,3000)
+
+outer("Welcome!");
+
+
+//closure way
+
+function outerTime() {
+
+    const msg = 'Welcome World';
+
+    function innerTime() {
+        console.log(msg)
+    }
+
+    return innerTime;
+}
+
+const closeTime = outerTime();
+closeTime();
+setTimeout(closeTime, 5000);
+
+//normal way
+
+function outerFunction() {
+    const message = "Hello from Outer Function!";
+
+    function innerFunction() {
+        console.log(message); 
+    }
+
+    innerFunction();
+}
+
+outerFunction();
 
     </script>
 </body>

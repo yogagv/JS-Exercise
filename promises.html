@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+    <button>Click</button>
+    <button>Navigator</button>
+</head>
+<body>
+    
+    <script>
+
+        console.log('A');    //synchronous code - block the execution of the next statement until the current one is executed. until 'A' is executed 'C' will not be executed.
+        setTimeout(()=>{     //asynchronous code - doesn't block the execution of the next statement. It executes it schedules the function to be executed after a certain time.
+            console.log('B');
+            
+        },3000);
+        console.log('C');
+
+       //The Entire process is known as AJAX - Asynchronous JavaScript and XML.
+
+       //////////////////////////////////////////
+       console.log('-------------------- Next Example ---------------------');
+       
+       const btn = document.querySelector('button')
+       .addEventListener('click', () =>                      //addEventListener also asynchronous code.
+       {console.log('Button Clicked');
+       })
+
+       let count = 1;
+       console.log(count);
+       
+       setTimeout(()=>{
+        console.log('D');
+       },3000)
+
+       console.log('E');
+
+
+
+       //////////////////////////////
+
+       console.log('--------Navigator----------');
+
+
+       function trackHandler() {
+        navigator.geolocation.getCurrentPosition((res)=>{       //when user clicks button 1st callback function will be executed, then 2nd callback function will be executed.
+                setTimeout(()=>{                                //geolocation default backend api
+                    console.log(res);
+                }, 3000)                                         //we have 3 callbacks for geolocation api - 1st callback function is executed when user clicks the button(trackHandler), 2nd callback function is executed when user gives permission((res)=>{}), 3rd callback function is executed when user location is fetched(setTiemOut(()=>{})).
+        }, (err)=>{
+                console.log(err);                                //callback hell - deeply nested callbacks.
+        })
+
+            console.log('Timer Done..!');
+            
+       }
+
+       const navBtn = document.getElementsByTagName('button')[1]
+       navBtn.addEventListener('click', trackHandler)
+       
+
+       //Promises - To avoid Deeply nested callbacks(callback hell) they introduced promises.
+
+       //You can handle Promises in JavaScript using three main techniques:
+       // 1.then() & .catch() (Chaining)
+       // 2.async/await with try...catch
+
+       //if some error happens in parent callback function, it will be affected to child callback function. but in promises , if some error happens in parent callback, it won't be affected to child callback.
+        
+       const promise = new Promise((res, err)=>{
+         if(Math.random() >= 0.5){
+            console.log('You Won!');
+         } else {
+            console.log('You Lost!');
+         }
+       })
+
+       promise.then((res)=>{                //if the message is success we get then method, if error we get catch method.
+        console.log(res);
+       }).catch((err)=>{
+        console.log(error);
+       })
+
+
+       const fetchData = new Promise((res, err)=>{
+            let success = true;
+            if(success){
+                setTimeout(()=>{
+                    console.log('Data fetched Successfully.');
+                },5000)
+            } else {
+                setTimeout(()=>{
+                    console.log('Unable to fetch Data.');
+                },5000)
+            }
+       })
+
+       fetchData.then((res)=>{
+            console.log(res);
+       }).catch((err)=>{
+            console.log(err);
+       })
+    </script>
+</body>
+</html>
