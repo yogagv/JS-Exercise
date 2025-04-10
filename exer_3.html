@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    console.log(2 + '2' - 1);
+
+   var xz =10;
+
+   (function() {
+
+    console.log(xz);
+    var xz = 30;
+   }) ()
+
+
+//    for(let i=0; i< 3 ; i++) {
+//     setTimeout(()=>{
+//         console.log(i);
+//     }, 1000)
+//    }
+ 
+console.log('----------------------');
+
+   //print one per second
+   for(let j=0; j< 3 ; j++) {
+    setTimeout(()=>{
+        console.log(j);
+    }, j * 2000)
+   }
+
+   console.log(Math.random());
+   console.log(Math.random());
+   console.log(Math.random());
+ 
+   console.log('//////////////////////');
+
+   console.log(Math.floor(Math.random()*900000+100000));
+
+   console.log(Math.floor(Math.random()*900000+100000));
+
+   const otp = Math.floor(100000 + Math.random() * 900000);
+   console.log(otp);
+
+
+   const car = ['AUDI', 'BMW', 'FERRARI'];
+
+   const carRes = car.map((val, i) => {
+    console.log(val + ' car');
+    
+   })
+
+   const myCar = car.map(val => val + ' Car');
+   console.log(myCar);
+   
+
+
+   function fun(num) {
+
+    return num + ' CAR'
+
+   }
+
+   const newarr = car.map(fun)
+
+   console.log(newarr);
+   
+   
+   const obj1 = {
+    name: 'alex',
+    email: 'alex@123.in',
+    info : {
+        city: 'Chennai',
+        state: 'Tamilnadu'
+    }
+   }
+
+   const obj2 = {...obj1};
+   console.log(obj2);
+
+   obj2.info.city = 'Kolkata';
+   console.log(obj1);
+   
+   
+   
+   
+   
+    </script>
+</body>
+</html>

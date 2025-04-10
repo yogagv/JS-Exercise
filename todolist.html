@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+
+            text-align: center;
+        }
+        .input-section {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        #taskInput {
+            flex: 1;
+            padding: 8px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #taskList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #taskList li {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #4CAF50;
+            display: flex;
+            justify-content: space-between;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            padding: 2px 8px;
+            font-size: 12px;
+        }
+
+        /* Custom Alert Styles */
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            min-width: 300px;
+            z-index: 1000;
+            text-align: center;
+        }
+        .custom-alert h3 {
+            margin-top: 0;
+            color: #f44336;
+        }
+        .alert-message {
+            margin: 15px 0;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .close-btn {
+            background-color: #2196F3;
+            margin-top: 10px;
+            width: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="">To Do list</h1>
+        <div class="input-section">
+        <input type="text" id="taskInput" placeholder="Enter task">
+        <button id="addtask">Add task</button>
+        </div>
+        <ul id="taskList"></ul>
+
+        <!-- Custom Alert -->
+    <div class="overlay" id="overlay"></div>
+    <div class="custom-alert" id="customAlert">
+        <h3>Alert</h3>
+        <div class="alert-message" id="alertMessage"></div>
+        <button class="close-btn" id="closeAlert">OK</button>
+    </div>
+
+    </div>
+    <script>
+
+// Get the input field and the button
+     const usertask = document.getElementById('taskInput')
+     const addBtn = document.getElementById('addtask')
+     const addTask = document.getElementById('taskList')
+
+
+
+     const customAlert = document.getElementById('customAlert');
+     const overlay = document.getElementById('overlay');
+     const alertMessage = document.getElementById('alertMessage');
+     const closeAlert = document.getElementById('closeAlert');
+
+
+     function showAlert(message) {
+            alertMessage.textContent = message;
+            customAlert.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+        
+        // Close alert when OK button is clicked
+        closeAlert.addEventListener('click', function() {
+            customAlert.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+
+        function addNewTask () {
+
+            taskVal = usertask.value.trim();
+
+        if(taskVal.length === 0){
+
+            showAlert('Enter the task')
+            return
+        } 
+
+            const li = document.createElement('li')
+            li.textContent = taskVal;
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.classList = 'delete-btn'
+            deleteBtn.addEventListener('click', ()=>{
+                addTask.removeChild(li)
+            })
+
+
+            li.appendChild(deleteBtn);
+            addTask.appendChild(li);
+
+            usertask.value = '';
+            usertask.focus();
+
+
+        }
+
+            addBtn.addEventListener('click', addNewTask) 
+
+            // Add event listener for Enter key press
+            usertask.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addNewTask();
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -37,6 +37,7 @@
         let resultValue = add(mul(3,4),5);
         console.log();
         
+        
 ////////////////////////////////////////////////
 console.log('----------using return keyword----------');
 
@@ -85,7 +86,7 @@ console.log('----------using return keyword----------');
         //or we can call like
         // fun()();
 
-        //////////////////////////
+       //////////////////////////
 
        const btn = document.getElementsByTagName('button')[0]
        btn.addEventListener('click', ()=>{
@@ -113,12 +114,9 @@ console.log('----------using return keyword----------');
 
        //javascript is best = JAVASCRIPT is best
 
-
-
        //here, firstWordUpper is a callback function.
 
        //we are calling inside the textTrans function.
-
 
        //textTrans is a Higher order Function because it takes another function(firstWordUpper) as an argument.
        
@@ -127,27 +125,28 @@ console.log('----------using return keyword----------');
             console.log(`input String: ${str}`);
 
             console.log(`Converted String: ${fn(str)}`);
+
        }
 
        textTrans('javascript is best', firstWordWrapper)
 
 
-
        //firstWordUpper is a callback Function.
 
        function firstWordWrapper(str1) {
-        // console.log(str1)
+       // console.log(str1)
 
-        // let word = str1.split(" ");    //instead of this
-        // console.log(word);
+       // let word = str1.split(" ");    //instead of this
+       // console.log(word);
 
-        //instead of the above code for split we can destructuring and use rest operator. 
+       //instead of the above code for split we can destructuring and use rest operator. 
 
-        let [first, ...others] = str1.split(" ");
-        // console.log(first);
+       let [first, ...others] = str1.split(" ");
+       // console.log(first);
 
-        // return [first.toUpperCase(), ...others];                //it returns with comma coz this is array element. so we need to convert it.
-        return [first.toUpperCase(), ...others].join(' ');      //join is used to convert array to string. Wherever there is a space in array it will be converted to space in string using join(' ').
+       // return [first.toUpperCase(), ...others];                //it returns with comma coz this is array element. so we need to convert it.
+       return [first.toUpperCase(), ...others].join(' ');      //join is used to convert array to string. Wherever there is a space in array it will be converted to space in string using join(' ').
+
 }
 
 
@@ -182,16 +181,42 @@ console.log(a+b);
 //this entire function is a higher order function bcoz it returns a function.
 
 //parent function - x, inner fucntion - function(num2){}  
-    function fnCurrying(num1) {
-        return function(num2){
-            console.log(num1 + num2)
-        }
+    
+function fnCurrying(num1) {
+
+    return function(num2){
+
+        console.log(num1 + num2)
     }
+}
 
     const add1 = fnCurrying(2)(3);  //here we are calling a inner function function(3) while calling a parent fucntion fnCurrying(2). so it is currying. x(2) is for num1 and x(3) is for num2
 
    
 
+   //callback
+
+   function A(funCall) {
+
+    console.log('Function A');
+    funCall()
+    
+   }
+
+   function B() {
+
+     console.log('Function B');
+    
+   }
+
+   console.log(A(B))
+
+   const a = [1,2,3,1,2,3];
+   console.log([...new Set(a)]);
+
+   const xy= 'MY string';
+   console.log(xy.split(" "));
+   
     </script>
 </body>
 </html>

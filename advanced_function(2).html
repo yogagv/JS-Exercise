@@ -54,7 +54,8 @@
         //here we use info function globally so that we can call anywhere.
 
         const info = function(mon, year) {
-                    console.log(`${this.brand} released ${this.model} for the price of ${this.price} in ${mon} ${year}`);
+
+                    console.log(`${this.brand} released ${this.model} for the price of ${this.price} in ${mon} and ${year}`);
             }
 
 
@@ -131,7 +132,7 @@
        // A closure in JavaScript is a function that remembers the variables from its outer scope even after the outer function 
        // has finished executing. This allows the inner function to retain access to variables from the outer function.
 
-        //Normal Function
+       //Normal Function
 
         function myFun() {
             let count = 1
@@ -167,7 +168,6 @@
         //x now stores a reference to innerFunction, NOT the result of executing it.
         //Since innerFunction references count, JavaScript keeps count in memory.
 
-
         // Normally, when a function finishes, its variables are deleted.
         // BUT! Since innerFunction still needs count, JavaScript keeps count in memory.
         // This is called a closure: the inner function remembers and retains access to the outer function’s variables.
@@ -178,19 +178,22 @@
         //lexical scope example 
 
         function grandParent() {
-    let a = "Grandparent";
-    console.log(a)
+        let a = "Grandparent";
+        console.log(a)
 
-    function parent() {
+        function parent() {
+            
         let b = "Parent";
         console.log(a);
         console.log(b);
 
         function child() {
-            let c = "Child";
-            console.log(a); 
-            console.log(b); 
-            console.log(c); 
+
+        let c = "Child";
+        console.log(a); 
+        console.log(b); 
+        console.log(c);
+
         }
 
         child();
